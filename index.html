@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Task 1 Body Paragraphs: Bar + Pie Grammar Workshop</title>
+<style>:root{
+  --ink:#1e2233; --muted:#5b6075; --paper:#ffffff; --line:#dfe3ee;
+  --good:#16a34a; --bad:#dc2626;
+  --r-lg:22px; --r-md:14px; --r-sm:9px;
+  --head:"Trebuchet MS","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Segoe UI","Avenir Next",Verdana,system-ui,sans-serif;
+  --ar:"Segoe UI","Noto Naskh Arabic",Tahoma,"Geeza Pro",sans-serif;
+}
+*{box-sizing:border-box}
+html{font-size:18px}
+body{margin:0;font-family:var(--body);color:var(--ink);line-height:1.55;
+  background-color:var(--tint);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--sec);outline-offset:2px}
+.ar{font-family:var(--ar);direction:rtl;unicode-bidi:isolate}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:var(--pri);color:#fff;box-shadow:0 3px 0 var(--sec)}
+.top-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px}
+.top .num{font-family:var(--head);font-weight:800;font-size:1.9rem;line-height:1;background:var(--sec);color:var(--pri-dark);border-radius:12px;padding:6px 12px}
+.top h1{font-family:var(--head);font-size:1.25rem;margin:0;line-height:1.2}
+.top small{display:block;opacity:.85;font-size:.8rem}
+.top .grow{flex:1}
+.chip{background:rgba(255,255,255,.18);border-radius:999px;padding:6px 14px;font-weight:700;white-space:nowrap}
+.tools button{background:rgba(255,255,255,.14);border:0;border-radius:10px;padding:7px 11px;color:#fff;font-size:.85rem}
+.tools button:hover{background:rgba(255,255,255,.28)}
+
+/* hero */
+.hero{max-width:1080px;margin:26px auto 8px;padding:0 18px;display:grid;grid-template-columns:1.2fr 1fr;gap:22px;align-items:center}
+.hero h2{font-family:var(--head);font-size:2.6rem;line-height:1.08;margin:0 0 10px;color:var(--pri-dark)}
+.hero p{margin:0 0 6px;font-size:1.05rem;color:var(--muted);max-width:52ch}
+.hero .ar{font-size:1.2rem;color:var(--pri)}
+.hero-graph{background:var(--paper);border-radius:var(--r-lg);border:3px solid var(--pri);padding:10px;box-shadow:8px 8px 0 var(--sec)}
+.hero-graph svg{width:100%;height:auto;display:block}
+.draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.2s ease-out .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* step rail */
+.rail{max-width:1080px;margin:18px auto 0;padding:0 18px;display:flex;gap:8px;flex-wrap:wrap}
+.rail button{border:2px solid var(--pri);background:var(--paper);border-radius:999px;padding:8px 14px;font-weight:700;font-size:.9rem;display:flex;gap:8px;align-items:center}
+.rail button .n{background:var(--pri);color:#fff;border-radius:50%;width:24px;height:24px;display:inline-grid;place-items:center;font-size:.8rem}
+.rail button[aria-current="step"]{background:var(--pri);color:#fff}
+.rail button[aria-current="step"] .n{background:var(--sec);color:var(--pri-dark)}
+.rail button.done .n{background:var(--good)}
+
+main{max-width:1080px;margin:18px auto 40px;padding:0 18px}
+.panel{background:var(--paper);border-radius:var(--r-lg);padding:26px 28px;border:2px solid var(--line)}
+.panel>h3{font-family:var(--head);font-size:1.75rem;margin:0 0 4px;color:var(--pri-dark)}
+.panel>.lead{color:var(--muted);margin:0 0 20px;max-width:70ch}
+.lead .ar{display:block;margin-top:2px}
+
+/* graphs */
+.gbox{background:#fff;border:2px solid var(--line);border-radius:var(--r-md);padding:8px}
+.gbox svg{width:100%;height:auto;display:block}
+.gtitle{font-weight:700;text-align:center;font-size:.95rem;margin:4px 0 0}
+.gcap{text-align:center;font-family:var(--head);font-weight:800;color:var(--pri);font-size:1.1rem}
+.gridn{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-bottom:18px}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:.85}}
+.hl{animation:pulse 1.3s ease-in-out infinite}
+
+/* questions */
+.q{border-left:6px solid var(--sec);background:var(--soft);border-radius:var(--r-md);padding:16px 18px;margin:0 0 16px}
+.q .qt{font-weight:700;font-size:1.08rem;margin:0 0 10px}
+.q .qn{color:var(--pri);font-family:var(--head);font-weight:800;margin-right:6px}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opt{border:2px solid var(--pri);background:#fff;border-radius:12px;padding:9px 16px;font-size:1rem;font-weight:600;text-align:left}
+.opt:hover:not(:disabled){background:var(--soft2)}
+.opt:disabled{cursor:default}
+.opt.right{background:var(--good);border-color:var(--good);color:#fff}
+.opt.wrong{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt.dim{opacity:.5}
+.opts.col{flex-direction:column}
+.fb{margin-top:10px;font-size:.95rem;padding:9px 12px;border-radius:10px;display:none}
+.fb.show{display:block}
+.fb.good{background:#dcfce7;color:#14532d}
+.fb.bad{background:#fee2e2;color:#7f1d1d}
+.blank{display:inline-block;min-width:90px;border-bottom:3px solid var(--pri);text-align:center;font-weight:800;color:var(--pri)}
+.band5{background:#fff;border:2px dashed #e11d48;border-radius:10px;padding:8px 12px;margin:0 0 10px;font-style:italic}
+.band5 b{font-style:normal;color:#be123c}
+
+/* word cards */
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.card{perspective:900px;height:285px;border:0;background:none;padding:0;text-align:left}
+.card .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r-md);padding:14px;display:flex;flex-direction:column}
+.front{background:#fff;border:3px solid var(--pri);align-items:center;justify-content:center;text-align:center;gap:6px}
+.front .w{font-family:var(--head);font-weight:800;font-size:1.45rem;color:var(--pri-dark);line-height:1.15}
+.front .pos{font-size:.8rem;background:var(--soft);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.front svg{width:92px;height:62px}
+.front .tap{font-size:.75rem;color:var(--muted)}
+.card.seen .front{border-color:var(--good)}
+.back{background:var(--pri);color:#fff;transform:rotateY(180deg);gap:6px;font-size:.9rem;overflow:auto}
+.back .ar{font-size:1.25rem;font-weight:700;color:var(--sec)}
+.back .ex{background:rgba(255,255,255,.14);border-radius:8px;padding:6px 8px}
+.back .ex b{color:var(--sec)}
+.say{align-self:flex-start;border:0;background:var(--sec);color:var(--pri-dark);border-radius:8px;padding:2px 10px;font-size:.8rem;font-weight:700}
+
+/* order */
+.tray{display:flex;flex-wrap:wrap;gap:8px;min-height:52px;padding:8px;border-radius:12px}
+.tray.ans{background:#fff;border:2px dashed var(--pri);margin-bottom:10px}
+.tile{border:2px solid var(--sec);background:#fff;border-radius:10px;padding:6px 12px;font-weight:600}
+.tray.ans .tile{background:var(--sec);color:var(--pri-dark)}
+.act{border:0;background:var(--pri);color:#fff;border-radius:10px;padding:9px 18px;font-weight:700;margin-right:8px}
+.act.alt{background:#fff;color:var(--pri);border:2px solid var(--pri)}
+
+/* match */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.match .colm{display:flex;flex-direction:column;gap:8px}
+.mbtn{border:2px solid var(--pri);background:#fff;border-radius:10px;padding:9px 12px;font-weight:600;text-align:center;min-height:46px}
+.mbtn.sel{background:var(--sec);border-color:var(--sec);color:var(--pri-dark)}
+.mbtn.ok{background:var(--good);border-color:var(--good);color:#fff}
+.mbtn.no{background:var(--bad);border-color:var(--bad);color:#fff}
+
+/* model */
+.task{background:var(--soft);border-radius:var(--r-md);padding:12px 16px;margin-bottom:16px;font-style:italic}
+.modelwrap{display:grid;grid-template-columns:1fr 1.05fr;gap:22px;align-items:start}
+.modelwrap .gstick{position:sticky;top:86px}
+.para{margin:0 0 14px}
+.para .lab{display:inline-block;font-family:var(--head);font-weight:800;font-size:.8rem;color:#fff;background:var(--pri);border-radius:6px;padding:1px 8px;margin-bottom:4px}
+.para p{margin:0;font-size:1.05rem;line-height:1.75}
+.hlw{border:0;background:var(--soft2);border-bottom:3px solid var(--sec);border-radius:5px 5px 0 0;padding:0 3px;font-weight:700;color:var(--pri-dark)}
+.hlw.on{background:var(--sec);color:var(--pri-dark)}
+.hint{font-size:.9rem;color:var(--muted);margin:6px 0 12px}
+
+/* writing */
+textarea{width:100%;min-height:230px;border:2px solid var(--pri);border-radius:var(--r-md);padding:14px;font:inherit;font-size:1.05rem;line-height:1.7}
+.targets{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.tg{border:2px solid var(--line);border-radius:999px;padding:4px 12px;font-weight:600;font-size:.9rem;background:#fff}
+.tg.on{background:var(--good);border-color:var(--good);color:#fff}
+.wc{font-weight:700}
+.starters{background:var(--soft);border-radius:12px;padding:10px 16px;margin:12px 0}
+.starters li{margin:2px 0}
+
+.reveal{margin-top:18px;background:var(--soft2);border-radius:var(--r-md);padding:14px 18px}
+.reveal .ar{display:block}
+.act:disabled{opacity:.45;cursor:not-allowed}
+.compare{margin-top:20px;border-top:3px dashed var(--sec);padding-top:16px}
+.compare h4{font-family:var(--head);font-size:1.4rem;color:var(--pri-dark);margin:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:10px 0}
+.mine,.sample{background:#fff;border:2px solid var(--line);border-radius:var(--r-md);padding:14px 16px}
+.sample{border-color:var(--pri)}
+.mine .lab,.sample .lab{display:inline-block;font-family:var(--head);font-weight:800;font-size:.8rem;color:#fff;background:var(--pri);border-radius:6px;padding:1px 8px;margin-bottom:4px}
+.mine .lab{background:var(--muted)}
+.mine .txt{white-space:pre-wrap;line-height:1.7}
+.sample p{margin:0;line-height:1.75}
+mark{background:var(--soft2);border-bottom:3px solid var(--sec);color:var(--pri-dark);font-weight:700;padding:0 2px;border-radius:3px}
+.check{background:var(--soft);border-radius:var(--r-md);padding:12px 16px;display:flex;flex-direction:column;gap:6px}
+.check input{width:20px;height:20px;vertical-align:middle;accent-color:var(--pri)}
+/* badges & finish */
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin:14px 0 20px}
+.badge{border:2px solid var(--line);border-radius:var(--r-md);padding:12px;text-align:center;background:#fff;opacity:.55}
+.badge.got{opacity:1;border-color:var(--sec);background:var(--soft)}
+.badge .ic{font-size:2rem}
+.badge b{display:block;font-size:.95rem}
+.badge small{color:var(--muted)}
+.scorebig{font-family:var(--head);font-weight:800;font-size:3.4rem;color:var(--pri);line-height:1}
+.bar{height:16px;background:var(--soft);border-radius:999px;overflow:hidden;margin:8px 0 16px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pri),var(--sec))}
+.finish input{font:inherit;font-size:1.05rem;border:2px solid var(--pri);border-radius:10px;padding:9px 12px;width:min(360px,100%)}
+.navrow{display:flex;justify-content:space-between;margin-top:22px;gap:10px}
+
+.cert-bg{position:fixed;inset:0;background:rgba(20,20,40,.6);z-index:50;display:none;place-items:center;padding:16px}
+.cert-bg.show{display:grid}
+.cert{background:#fff;max-width:760px;width:100%;border-radius:18px;padding:34px;text-align:center;border:12px solid var(--pri);outline:4px solid var(--sec);outline-offset:-22px;position:relative}
+.cert h2{font-family:var(--head);color:var(--pri-dark);font-size:2.2rem;margin:6px 0}
+.cert .nm{font-family:Georgia,serif;font-size:2.3rem;color:var(--pri);border-bottom:2px solid var(--sec);display:inline-block;padding:0 20px;margin:8px 0}
+.cert .by{margin-top:18px;font-size:.9rem;color:var(--muted)}
+.cert .btns{margin-top:18px}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:60}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 0 30px}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--pri-dark);color:#fff;padding:10px 18px;border-radius:12px;z-index:70;display:none}
+.toast.show{display:block}
+
+@media (max-width:820px){
+  html{font-size:17px}
+  .hero{grid-template-columns:1fr}
+  .hero h2{font-size:2rem}
+  .modelwrap{grid-template-columns:1fr}
+  .grid2{grid-template-columns:1fr}
+  .modelwrap .gstick{position:sticky;top:64px;z-index:5}
+  .top h1{font-size:1rem}.top small{display:none}
+  .panel{padding:20px 16px}
+  .match{grid-template-columns:1fr 1fr;gap:8px}
+}
+@media (prefers-reduced-motion:reduce){
+  .draw{animation:none;stroke-dashoffset:0}.hl{animation:none;opacity:.7}
+  .card .in{transition:none}
+}
+@media print{
+  body *{visibility:hidden}
+  .cert-bg,.cert-bg *{visibility:visible}
+  .cert-bg{position:absolute;inset:0;background:none;display:block}
+  .cert .btns{display:none}
+}
+
+/* Build Your Answer additions */
+.obj{background:var(--paper);border:2px solid var(--pri);border-radius:var(--r-md);padding:10px 16px;margin-top:12px;max-width:52ch}
+.obj ul{margin:6px 0 0;padding-left:20px}.obj li{margin:2px 0}
+.lcard{border:2px solid var(--line);border-radius:var(--r-md);padding:16px 20px;margin-bottom:16px;background:#fff}
+.lcard.seen{border-color:var(--pri)}
+.lhead{display:flex;align-items:center;gap:12px}
+.lhead h4{font-family:var(--head);font-size:1.3rem;margin:0;color:var(--pri-dark)}
+.lnum{background:var(--pri);color:#fff;border-radius:50%;width:34px;height:34px;display:grid;place-items:center;font-weight:800;flex:none}
+.lcard.seen .lnum{background:var(--good)}
+.lar{color:var(--pri);margin:6px 0 10px;font-size:1.05rem}
+.lcard p{margin:0 0 10px;max-width:75ch}
+.llist{margin:0 0 12px;padding-left:22px}.llist li{margin:4px 0}
+.ltable{overflow-x:auto;margin:0 0 12px}
+.ltable table{border-collapse:collapse;width:100%;font-size:.95rem}
+.ltable th{background:var(--pri);color:#fff;text-align:left;padding:7px 10px}
+.ltable td{border:1px solid var(--line);padding:7px 10px;vertical-align:top}
+.ltable tr:nth-child(even) td{background:var(--soft)}
+.lex{border-left:6px solid var(--sec);background:var(--soft2);border-radius:10px;padding:10px 14px;margin:0 0 12px}
+.lex.bad{border-left-color:var(--bad);background:#fee2e2}
+.lex.good{border-left-color:var(--good);background:#dcfce7}
+.seg{padding:1px 4px;border-radius:5px;font-weight:700}
+.seg.s1{background:#dbeafe;color:#1e3a8a}.seg.s2{background:#fce7f3;color:#9d174d}.seg.s3{background:#dcfce7;color:#14532d}.seg.s4{background:#fef3c7;color:#78350f}.seg.s5{background:#ede9fe;color:#4c1d95}
+.opt.pickm.on{background:var(--soft2);border-color:var(--sec)}
+.opt.missed{background:#dcfce7;border-color:var(--good);color:#14532d}
+.sortlist{display:flex;flex-direction:column;gap:10px}
+.srow{background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 12px}
+.stext{font-weight:600;margin-bottom:8px}
+.scats{display:flex;flex-wrap:wrap;gap:6px}
+.scat{border:2px solid var(--pri);background:#fff;border-radius:999px;padding:4px 12px;font-size:.9rem;font-weight:700}
+.scat.right{background:var(--good);border-color:var(--good);color:#fff}
+.scat.wrong{background:var(--bad);border-color:var(--bad);color:#fff}
+.scat.dim{opacity:.45}
+.tile{text-align:left}
+.job{display:inline-block;margin-left:8px;font-size:.85rem;color:var(--muted);font-style:italic}
+.task ol{margin:8px 0 0;padding-left:22px}
+
+.hlw{cursor:pointer;-webkit-box-decoration-break:clone;box-decoration-break:clone;line-height:1.9}
+.gridn:has(> :only-child){max-width:700px}
+
+.tr{background:#fdf2f8;border-bottom:3px dashed #db2777;color:#9d174d;font-weight:700;padding:0 3px;border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.legend{font-size:.9rem;color:var(--muted);margin:0 0 10px}
+.hldemo{background:var(--soft2);border-bottom:3px solid var(--sec);border-radius:5px 5px 0 0;padding:0 3px;font-weight:700;color:var(--pri-dark)}
+.linkers{background:#fdf2f8;border-radius:12px;padding:10px 16px;margin:12px 0}
+.linkers .lk{display:inline-block;margin:6px 6px 0 0;background:#fff;border:2px dashed #db2777;color:#9d174d;border-radius:999px;padding:3px 12px;font-weight:700;font-size:.92rem}
+
+/* exam practice additions */
+.search{width:100%;max-width:420px;font:inherit;font-size:1rem;border:2px solid var(--pri);border-radius:999px;padding:9px 16px;margin-bottom:14px}
+.bsec{font-family:var(--head);color:var(--pri-dark);font-size:1.25rem;margin:22px 0 8px}
+.tasktabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.ttab{border:2px solid var(--pri);background:#fff;border-radius:999px;padding:7px 15px;font-weight:700;font-size:.92rem}
+.ttab.on{background:var(--pri);color:#fff}
+.ttab.done{border-color:var(--good)}
+.ttab.done.on{background:var(--good);border-color:var(--good)}
+.taskwrap{border:2px solid var(--line);border-radius:var(--r-lg);padding:16px;background:#fff}
+.tasktop{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.tasktop h4{font-family:var(--head);font-size:1.3rem;margin:0;color:var(--pri-dark)}
+.kind{background:var(--pri);color:#fff;border-radius:999px;padding:3px 12px;font-size:.8rem;font-weight:800}
+.kind.pie{background:var(--acc);color:#04263a}
+.tgrid{display:grid;grid-template-columns:1fr 1.05fr;gap:20px;align-items:start}
+.tgrid .gstick{position:sticky;top:86px}
+.stepline{margin:16px 0 8px;font-size:1.02rem;color:var(--pri-dark)}
+.timer{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap;background:var(--soft);border-radius:12px;padding:8px 12px}
+.clock{font-family:var(--head);font-weight:800;font-size:1.7rem;color:var(--pri-dark);min-width:86px}
+.clock.low{color:var(--bad)}
+.act.small{padding:5px 12px;font-size:.85rem}
+textarea.writing{width:100%;min-height:260px;border:2px solid var(--pri);border-radius:var(--r-md);padding:14px;font:inherit;font-size:1.03rem;line-height:1.7;margin-top:6px}
+details.starters summary{cursor:pointer;font-size:.95rem}
+details.starters ul{margin:8px 0 0}
+.samplezone{margin-top:8px}
+@media (max-width:820px){ .tgrid{grid-template-columns:1fr} .tgrid .gstick{position:static} }
+
+.pickline{margin:0 0 10px;color:var(--muted)}
+.tasktabs{gap:12px}
+.ttab{display:flex;flex-direction:column;align-items:stretch;gap:6px;border-radius:14px;padding:8px;width:190px;text-align:center}
+.ttab .tlabel{font-size:.85rem}
+.ttab .thumb{display:block;background:#fff;border-radius:8px;padding:3px;pointer-events:none}
+.ttab .thumb svg{width:100%;height:auto;display:block}
+.ttab.on .thumb{outline:2px solid var(--sec)}
+@media (max-width:820px){ .ttab{width:132px} }
+
+.thumb.pair{display:flex;gap:4px}
+.thumb.pair svg{width:50%}
+.chartwrap{margin-bottom:12px}
+.clabel{display:inline-block;background:var(--pri);color:#fff;border-radius:6px;padding:1px 9px;font-size:.78rem;font-weight:800;margin-bottom:4px}
+</style></head>
+<body><div id="app"></div>
+<script>window.APPDATA = {
+id:"task1-body-grammar",
+title:"Task 1 Body Paragraphs: Bar + Pie Grammar Workshop",
+headline:"The two paragraphs where you win or lose marks.",
+subtitle:"Learn how to build Body 1 for a bar chart and Body 2 for a pie chart, with the grammar that examiners look for: tenses, agreement, articles, prepositions, comparatives and fractions.",
+arTitle:"تعلّم كيف تبني فقرة التفاصيل الأولى للمخطط بالأعمدة والثانية للمخطط الدائري، مع القواعد التي يبحث عنها الممتحن.",
+objectives:["build a body paragraph for a bar chart and for a pie chart","use the right tense, verb form, article and preposition in each sentence","write the two body paragraphs of a combined report in 12 minutes"],
+theme:{pri:"#6b21a8","pri-dark":"#3b0764",sec:"#fde047",acc:"#22d3ee",tint:"#faf5ff",grid:"rgba(107,33,168,.06)",soft:"#f3e8ff",soft2:"#fef9c3"},
+heroGraph:"b1",
+graphs:{
+  b1:{type:"bar",title:"Books borrowed from a library by genre, 2020 and 2025",unit:"Loans (thousands)",x:["Fiction","Science","History","Children"],yMax:50,yStep:10,
+    series:[{name:"2020",color:"#6b21a8",values:[40,20,15,25]},{name:"2025",color:"#0891b2",values:[35,30,12,33]}]},
+  c1:{type:"pie",title:"How visitors spent their time in the library, 2025",pies:[{title:"",slices:[
+    {label:"Reading",value:40,color:"#6b21a8"},{label:"Studying",value:30,color:"#0891b2"},{label:"Computers",value:15,color:"#16a34a"},{label:"Events",value:10,color:"#f59e0b"},{label:"Other",value:5,color:"#64748b"}]}]},
+  b2:{type:"bar",title:"Average daily sales at a bakery, by product",unit:"Items sold per day",x:["Bread","Pastries","Cakes","Sandwiches"],yMax:600,yStep:100,series:[{name:"Items",color:"#6b21a8",values:[500,340,220,180]}]},
+  c2:{type:"pie",title:"How customers ordered in 2025",pies:[{title:"",slices:[
+    {label:"In store",value:55,color:"#6b21a8"},{label:"Delivery app",value:25,color:"#0891b2"},{label:"Website",value:15,color:"#16a34a"},{label:"Phone",value:5,color:"#64748b"}]}]},
+  b3:{type:"bar",title:"People doing sport at least once a week, by age group, 2015 and 2025",unit:"People (%)",ySuffix:"%",x:["15–24","25–39","40–59","60+"],yMax:80,yStep:20,
+    series:[{name:"2015",color:"#6b21a8",values:[60,45,30,15]},{name:"2025",color:"#0891b2",values:[70,55,45,25]}]},
+  c3:{type:"pie",title:"Most popular sports in 2025",pies:[{title:"",slices:[
+    {label:"Football",value:30,color:"#6b21a8"},{label:"Swimming",value:25,color:"#0891b2"},{label:"Running",value:20,color:"#16a34a"},{label:"Gym",value:15,color:"#f59e0b"},{label:"Other",value:10,color:"#64748b"}]}]},
+  b4:{type:"bar",title:"Electricity produced by source, 2010 and 2025",unit:"Electricity (TWh)",x:["Gas","Coal","Solar","Wind"],yMax:160,yStep:40,
+    series:[{name:"2010",color:"#6b21a8",values:[120,80,10,20]},{name:"2025",color:"#0891b2",values:[150,30,90,60]}]},
+  c4:{type:"pie",title:"Where the electricity was used in 2025",pies:[{title:"",slices:[
+    {label:"Homes",value:35,color:"#6b21a8"},{label:"Industry",value:30,color:"#0891b2"},{label:"Services",value:25,color:"#16a34a"},{label:"Transport",value:10,color:"#64748b"}]}]},
+  xb:{type:"bar",title:"Hours per day students spent on four activities: weekday and weekend",unit:"Hours per day",x:["Studying","Sport","Screens","Family"],yMax:8,yStep:2,
+    series:[{name:"Weekday",color:"#6b21a8",values:[5,1,3,2]},{name:"Weekend",color:"#0891b2",values:[2,2,5,4]}]},
+  xc:{type:"pie",title:"How students spent their pocket money in 2025",pies:[{title:"",slices:[
+    {label:"Food",value:35,color:"#6b21a8"},{label:"Transport",value:20,color:"#0891b2"},{label:"Clothes",value:20,color:"#16a34a"},{label:"Entertainment",value:15,color:"#f59e0b"},{label:"Savings",value:10,color:"#64748b"}]}]},
+  g1:{type:"bar",title:"Example: sales in three shops, 2020 and 2025",unit:"Sales (thousands)",x:["Shop A","Shop B","Shop C"],yMax:60,yStep:20,
+    series:[{name:"2020",color:"#6b21a8",values:[40,25,15]},{name:"2025",color:"#0891b2",values:[50,20,35]}]}
+},
+guide:[
+  {t:"What a body paragraph must contain",ar:"فقرة التفاصيل تحتوي على جملة رئيسية، ثم أرقام ومقارنات، ثم جملة ختامية.",
+   body:["Each body paragraph has **3–5 sentences** and carries the **data**. Nothing else in your report has numbers."],
+   head:["Sentence","Job","Example"],
+   rows:[["**1**","Topic sentence: the **main point** of this chart + the first figures","In 2020, fiction was the most popular genre, with 40,000 loans."],
+     ["**2–3**","**Changes and comparisons**, with figures","By 2025, this figure had fallen to 35,000, while children's books rose by 8,000."],
+     ["**4**","The **end point** or a final comparison","History remained the least popular genre throughout."]]},
+  {t:"Body 1: the bar chart",ar:"فقرة المخطط بالأعمدة: ابدأ بالأعلى، ثم قارن، ثم اذكر الأدنى أو التغيّر.",
+   list:["Start with the **highest** bar, or with the **first year**.","**Compare** bars: higher than, twice as many as, compared with.","If there are **two years**, describe the **change**: rose by, fell from … to …","Finish with the **lowest** bar or the **biggest change**."],
+   graph:"g1",
+   ex:[{label:"Body 1 for this example",text:"((In 2020,)) Shop A sold 40,000 items, [[compared with]] 25,000 in Shop B ((and only)) 15,000 in Shop C. ((By 2025,)) sales in Shop A [[had risen]] to 50,000, ((while)) Shop C [[more than doubled]] its figure to 35,000. ((In contrast,)) Shop B was the only shop where sales [[fell]], ((dropping)) from 25,000 to 20,000.",kind:"good"}]},
+  {t:"Body 2: the pie chart",ar:"فقرة المخطط الدائري: ابدأ بالأكبر، ثم اجمع الأجزاء، وانتهِ بالأصغر.",
+   list:["Start with the **largest** slice: X **accounted for** 40% of …","Move down in order: **followed by**, **while**, **and**.","**Add slices together**: X and Y together **made up** almost three quarters.","Finish with the **smallest** slice: **the remaining** 5% …"],
+   ex:[{label:"Body 2 pattern",text:"{{Reading|1}} {{accounted for|2}} {{40% of the time|3}}, {{followed by studying with 30%|4}}. {{The remaining 5%|1}} {{was spent|2}} {{on other activities|3}}.",kind:"good"}]},
+  {t:"Joining the two charts",ar:"اربط الفقرتين بعبارة انتقال واضحة في بداية الفقرة الثانية.",
+   body:["In a combined report, Body 2 must **start with a signal** so the examiner sees that you have moved to the second chart."],
+   head:["Signal phrase","Example"],
+   rows:[["((Turning to the pie chart,))","Turning to the pie chart, reading accounted for 40% of visitors' time."],
+     ["((As for the second chart,))","As for the second chart, more than half of customers bought in the store."],
+     ["((In terms of how the time was spent,))","In terms of how the time was spent, reading came first."],
+     ["((The pie chart, meanwhile, shows…))","The pie chart, meanwhile, shows how that time was divided."]],
+   ex:[{label:"Do not mix the charts",text:"Keep bar chart figures in Body 1 and pie chart percentages in Body 2. Only compare them if the task asks you to.",kind:"bad"}]},
+  {t:"Five grammar points that cost marks",ar:"خمس نقاط نحوية تُفقدك الدرجات: الزمن، والمطابقة، وأدوات التعريف، وحروف الجر، والمقارنات.",
+   head:["Point","✗ Wrong","✓ Right"],
+   rows:[["Tense","In 2020, fiction **is** the most popular genre.","In 2020, fiction **was** the most popular genre."],
+     ["Agreement","The number of loans **were** 40,000.","The number of loans **was** 40,000."],
+     ["Article","**Number of** visitors rose.","**The number of** visitors rose."],
+     ["Preposition","Sales rose **with** 10,000.","Sales rose **by** 10,000."],
+     ["Comparative","Twice **more than** sandwiches.","Twice **as many as** sandwiches."]]},
+  {t:"Before you move on",ar:"قائمة مراجعة لفقرتي التفاصيل.",
+   list:["Body 1 has **figures from the bar chart** only.","Body 2 starts with a **signal phrase** and has **percentages**.","Every verb is in the **past simple** (or past perfect after *by + year*).","I used **the number of / the amount of** correctly.","I used **by, from … to, at, of** correctly.","I made **at least two comparisons**."]}
+],
+bank:[
+  {t:"Tenses in the body",head:["Rule","Example","Arabic"],rows:[
+    ["Past year on the chart → **past simple**","In 2020, fiction **was** the most popular genre.","الماضي البسيط"],
+    ["**By + year** → past perfect","**By 2025,** the figure **had fallen** to 35,000.","الماضي التام"],
+    ["No date on the chart → **present simple**","Reading **accounts for** 40% of the time.","المضارع البسيط"],
+    ["Future year → **is expected to**","In 2030, sales **are expected to** reach 900 units.","من المتوقع أن"],
+    ["Irregular forms","rise–**rose**, fall–**fell**, grow–**grew**, buy–**bought**","أفعال شاذة"]]},
+  {t:"Subject and verb agreement",head:["Rule","Example","Arabic"],rows:[
+    ["**The number of** + plural noun + **singular** verb","The number of visitors **was** 5,000.","عدد + فعل مفرد"],
+    ["**A number of** = many + **plural** verb","A number of students **were** absent.","عدد من + فعل جمع"],
+    ["**Percentage of** + plural noun → plural verb","40% of the students **were** women.","نسبة من + جمع"],
+    ["**Percentage of** + uncountable → singular verb","40% of the water **was** used for showers.","نسبة من + غير معدود"],
+    ["**Each / every** + singular verb","Each category **shows** a different pattern.","كل + مفرد"]]},
+  {t:"Articles and noun phrases",head:["Rule","Example","Arabic"],rows:[
+    ["**the** number / amount / figure / share / proportion","**The figure for** Shop A was 40,000.","أداة التعريف"],
+    ["**a** quarter / **a** fifth **of the** + noun","**A quarter of the** students chose swimming.","ربع من"],
+    ["No article with plural nouns in general","**Pastries** sold well at the weekend.","بدون أداة"],
+    ["No article with percentages","**35% of** the budget was spent on housing.","بدون أداة مع النسب"],
+    ["**the** + superlative","Bread was **the best-selling** product.","أداة التعريف مع التفضيل"]]},
+  {t:"Prepositions with numbers",head:["Pattern","Example","Arabic"],rows:[
+    ["rose / fell **by** + the difference","Sales rose **by** 10,000.","بمقدار"],
+    ["rose / fell **from … to …**","Loans fell **from** 40,000 **to** 35,000.","من … إلى"],
+    ["stood / remained / peaked **at** + a level","The figure peaked **at** 50,000.","عند"],
+    ["a rise / fall **of** + the difference","a fall **of** 5,000 loans","قدره"],
+    ["**the figure for** + category","**the figure for** history","الرقم الخاص بـ"],
+    ["spent **on** + category","35% was spent **on** food.","على"],
+    ["**in** + year, **at** the weekend, **per** day","**In** 2025, sales **per** day reached 500.","في / لكل"]]},
+  {t:"Comparatives and fractions",head:["Pattern","Example","Arabic"],rows:[
+    ["**twice / three times as many … as**","twice **as many** pastries **as** sandwiches","ضعف / ثلاثة أضعاف"],
+    ["**as much … as** (uncountable)","twice **as much** water **as** industry","بقدر"],
+    ["**more / fewer + plural noun + than**","**fewer** loans **than** in 2020","أكثر / أقل من"],
+    ["**more / less + uncountable + than**","**less** electricity **than** in 2010","أقل من"],
+    ["**half as much as / half the figure for**","The East earned **half as much as** the West.","نصف"],
+    ["**a quarter (25%) · a third (33%) · three quarters (75%)**","**Three quarters** of the time was spent reading and studying.","ربع / ثلث / ثلاثة أرباع"],
+    ["**percentage points** for a change between two percentages","a rise of 15 **percentage points**","نقاط مئوية"]]},
+  {t:"Relative clauses and adding detail",head:["Pattern","Example","Arabic"],rows:[
+    ["…, **which was** + detail","…50,000 items, **which was** the highest figure.","والذي كان"],
+    ["…, **where** + place / category","…solar power, **where** production rose sharply.","حيث"],
+    ["…, **making it** + result","…500 items a day, **making it** the best-selling product.","مما جعله"],
+    ["…, **compared with** + figure","…40,000 loans, **compared with** 25,000 in 2025.","مقارنةً بـ"],
+    ["…, **followed by** + the next biggest","Football came first, **followed by** swimming.","يليه"]]}
+],
+bankQuiz:[
+  {type:"gap",q:"In 2020, fiction ___ the most popular genre.",options:["was","is","has been"],answer:"was",why:"The chart gives a past year, so use the past simple."},
+  {type:"gap",q:"The number of visitors ___ 5,000 in 2025.",options:["was","were","have been"],answer:"was",why:"“The number of” takes a singular verb."},
+  {type:"gap",q:"By 2025, the figure ___ to 35,000.",options:["had fallen","falls","is falling"],answer:"had fallen",why:"“By + year” usually takes the past perfect."},
+  {type:"gap",q:"Sales rose ___ 10,000 between 2020 and 2025.",options:["by","with","of"],answer:"by",why:"“By” gives the size of the change."},
+  {type:"gap",q:"Loans fell ___ 40,000 ___ 35,000.",options:["from … to","between … to","of … at"],answer:"from … to",why:"“From … to …” gives the start and end figures."},
+  {type:"gap",q:"The bakery sold twice ___ pastries as sandwiches.",options:["as many","as much","more"],answer:"as many",why:"Pastries are countable: as many … as."},
+  {type:"gap",q:"The factory used twice ___ water as the homes.",options:["as much","as many","more than"],answer:"as much",why:"Water is uncountable: as much … as."},
+  {type:"gap",q:"___ number of loans fell, while the amount of money spent on books rose.",options:["The","A","No article"],answer:"The",why:"Use “the number of” and “the amount of”."},
+  {type:"gap",q:"A quarter ___ the students chose swimming.",options:["of","from","in"],answer:"of",why:"Fractions take “of the” + noun."},
+  {type:"gap",q:"Reading took 40% of the time, ___ was the largest share of the chart.",options:["which","who","where"],answer:"which",why:"“Which” adds a detail about a thing or a figure."},
+  {type:"multi",q:"Which THREE sentences are correct?",options:["The number of visitors was 5,000.","40% of the students were women.","Sales rose by 10,000 between 2020 and 2025.","The number of visitors were 5,000.","Sales rose with 10,000.","40% of the students was women."],
+   answers:["The number of visitors was 5,000.","40% of the students were women.","Sales rose by 10,000 between 2020 and 2025."],
+   why:"“The number of” is singular; “40% of the students” is plural; changes take “by”."},
+  {type:"match",title:"Match each preposition pattern with its meaning.",pairs:[["rose by 10,000","the size of the change"],["rose to 50,000","the final figure"],["peaked at 50,000","the highest level"],["a fall of 5,000","the size of a decrease"],["the figure for history","which category it belongs to"]]}
+],
+tasks:[
+  {id:"t1",kind:"pair",minutes:12,minWords:90,title:"Library loans and visitors' time",graphs:["b1","c1"],
+   steps:["Step 1 · Sort the sentences — which THREE belong in Body 1 (the bar chart)?","Step 2 · Choose the correct grammar","Step 3 · Fix the error","Step 4 · Write Body 1 and Body 2"],
+   prompt:"The bar chart shows the number of books borrowed from a library by genre in 2020 and 2025. The pie chart shows how visitors spent their time in the library in 2025. Write the two body paragraphs only (about 100–130 words).",
+   features:{q:"Choose the THREE sentences that belong in Body 1 (the bar chart).",
+     options:["In 2020, fiction was the most popular genre, with 40,000 loans.","The number of science books borrowed rose from 20,000 to 30,000.","History was the least popular genre in both years.","Reading accounted for 40% of visitors' time.","Overall, borrowing patterns changed between 2020 and 2025.","Students should read more history books."],
+     answers:["In 2020, fiction was the most popular genre, with 40,000 loans.","The number of science books borrowed rose from 20,000 to 30,000.","History was the least popular genre in both years."],
+     why:"Body 1 takes only the bar chart data. The pie chart sentence belongs in Body 2, the “Overall” sentence is the overview, and opinions never appear in Task 1."},
+   intro:{q:"Which sentence is grammatically correct?",
+     options:["The number of science books borrowed increased by 10,000 between 2020 and 2025.","The number of science books borrowed increased with 10,000 between 2020 and 2025.","The number of science books borrowed were increased by 10,000 between 2020 and 2025."],
+     answer:"The number of science books borrowed increased by 10,000 between 2020 and 2025.",
+     why:"“The number of” takes a singular verb, and a change takes “by”, not “with”."},
+   overview:{q:"Fix the error: “Studying accounted 30% of the time that visitors spent in the library.”",
+     options:["Studying accounted for 30% of the time that visitors spent in the library.","Studying was accounted for 30% of the time that visitors spent in the library.","Studying accounted for 30% of the time which visitors spent it in the library."],
+     answer:"Studying accounted for 30% of the time that visitors spent in the library.",
+     why:"The verb is “account for”. It is active, and the relative clause needs no extra object pronoun."},
+   language:["compared with","rose by","had fallen","the number of","accounted for","made up","the remaining","respectively"],
+   starters:["In 2020, fiction was the most popular genre, with…","By 2025, however, the number of fiction loans had fallen to…","In contrast, history remained…","Turning to the pie chart, reading accounted for…","Studying made up…, while using the computers represented…","Finally, events and other activities accounted for … and … respectively."],
+   targets:[{label:"past simple verbs",re:"\\b(was|were|rose|fell|remained|accounted|made|represented|grew|took)\\b"},{label:"by + number / from … to",re:"\\bby [\\d,]+|from [\\d,]+ ?[a-z,]* to [\\d,]+"},{label:"the number of",re:"the number of"},{label:"accounted for / made up",re:"account(s|ed)? for|made up|represent"},{label:"a fraction (quarter / third)",re:"quarter|third|\\bhalf\\b|fifth"},{label:"a signal phrase for the pie chart",re:"turning to|as for|in terms of|meanwhile"},{label:"3+ linking words",re:"\\b(however|in contrast|meanwhile|similarly|in addition|as a result|whereas|while|turning to|finally|therefore)\\b",min:3}],
+   sample:[
+     {label:"Body 1 (bar chart)",text:"((In 2020,)) fiction was [[the most popular]] genre, ((with)) 40,000 books borrowed, [[compared with]] 25,000 children's books. ((By 2025, however,)) [[the number of]] fiction loans [[had fallen]] to 35,000, ((while)) borrowing of children's books [[rose by]] 8,000 to 33,000. Science was the only other category to grow, ((increasing)) from 20,000 to 30,000 loans. ((In contrast,)) history remained [[the least popular]] genre, ((and)) its figure fell to 12,000."},
+     {label:"Body 2 (pie chart)",text:"((Turning to the pie chart,)) reading [[accounted for]] 40% of the time that visitors spent in the library, [[the largest share]] of the total. Studying [[made up]] [[almost a third]], ((while)) using the computers [[represented]] 15%. ((Finally,)) events and other activities [[accounted for]] 10% and 5% [[respectively]]. ((As a result,)) reading and studying together took up [[almost three quarters]] of visitors' time."}],
+   notes:["**the number of** + singular verb: *the number of fiction loans had fallen*","**by 2025** + past perfect: *had fallen*","**rose by** 8,000 (the size of the change)","**that** clause adds detail: *the time **that** visitors spent*","**respectively** goes at the end of the sentence"],
+   compare:["Does Body 1 contain only bar chart figures?","Does Body 2 start with a signal phrase?","Are all your verbs in the past simple (or past perfect after “by 2025”)?","Did you use “the number of” with a singular verb?"]},
+
+  {id:"t2",kind:"pair",minutes:12,minWords:90,title:"Bakery sales and how customers ordered",graphs:["b2","c2"],
+   steps:["Step 1 · Sort the sentences — which THREE belong in Body 1 (the bar chart)?","Step 2 · Choose the correct comparison","Step 3 · Fix the error","Step 4 · Write Body 1 and Body 2"],
+   prompt:"The bar chart shows the average number of items that a bakery sold each day, by product. The pie chart shows how customers ordered in 2025. Write the two body paragraphs only (about 100–130 words).",
+   features:{q:"Choose the THREE sentences that belong in Body 1 (the bar chart).",
+     options:["Bread was by far the best-selling product, at 500 items a day.","The bakery sold almost twice as many pastries as sandwiches.","Cakes and sandwiches were the least popular products.","More than half of the customers bought their food in the store.","Overall, bread sold better than any other product.","The bakery should open a second shop."],
+     answers:["Bread was by far the best-selling product, at 500 items a day.","The bakery sold almost twice as many pastries as sandwiches.","Cakes and sandwiches were the least popular products."],
+     why:"Body 1 uses the bar chart only. The fourth sentence is pie chart data, the fifth is an overview and the last is an opinion."},
+   intro:{q:"Which sentence is grammatically correct?",
+     options:["The bakery sold 340 pastries a day, which was almost twice as many as sandwiches.","The bakery sold 340 pastries a day, which was almost twice more than sandwiches.","The bakery sold 340 pastries a day, which was almost twice as much as sandwiches."],
+     answer:"The bakery sold 340 pastries a day, which was almost twice as many as sandwiches.",
+     why:"The pattern is “twice as many … as”, and pastries are countable, so “many”, not “much”."},
+   overview:{q:"Fix the error: “Just over the half of customers buyed their food in the store.”",
+     options:["Just over half of the customers bought their food in the store.","Just over the half of the customers bought their food in the store.","Just over half of customers buy their food in the store."],
+     answer:"Just over half of the customers bought their food in the store.",
+     why:"“Half of the customers” takes no article before “half”, and the past simple of buy is “bought”."},
+   language:["by far the best-selling","twice as many as","compared with","which was","As for the second chart,","accounted for","made up","the remaining"],
+   starters:["Bread was by far the best-selling product, at…","The bakery sold 340 pastries a day, which was almost twice as many as…","In contrast, cakes and sandwiches were…","As for the second chart, just over half of the customers…","The delivery app accounted for…, while the website made up…","Finally, the remaining 5%…"],
+   targets:[{label:"past simple verbs",re:"\\b(was|were|sold|bought|accounted|made|represented|came)\\b"},{label:"twice / times as many as",re:"(twice|times) as many"},{label:"which was / making it",re:"which was|making it"},{label:"accounted for / made up",re:"account(s|ed)? for|made up|represent"},{label:"a fraction (half / quarter)",re:"\\bhalf\\b|quarter|third|fifth"},{label:"a signal phrase for the pie chart",re:"turning to|as for|in terms of|meanwhile"},{label:"3+ linking words",re:"\\b(however|in contrast|meanwhile|similarly|in addition|as a result|whereas|while|turning to|finally|therefore)\\b",min:3}],
+   sample:[
+     {label:"Body 1 (bar chart)",text:"Bread was [[by far the best-selling]] product, ((with)) 500 items sold on an average day. Pastries came second, at 340 items, ((which was)) [[almost twice as many as]] the 180 sandwiches sold each day. ((In contrast,)) cakes and sandwiches were [[the least popular]] products, ((with)) 220 and 180 items [[respectively]]. ((In other words,)) the bakery sold [[more than twice as many]] loaves of bread as cakes."},
+     {label:"Body 2 (pie chart)",text:"((As for the second chart,)) [[just over half]] of the customers, 55% in total, bought their food in the store. The delivery app [[accounted for]] [[a quarter]] of orders, ((while)) the website [[made up]] 15%. ((Finally,)) [[the remaining]] 5% of customers ordered by phone, [[the smallest share]] of the chart. ((Therefore,)) [[four fifths]] of all orders were placed either in the store or through the app."}],
+     notes:["**twice as many … as** (countable) / **as much … as** (uncountable)","**which was** adds a comparison to the figure before it","**half of the customers** — no article before *half*","past simple: *sold, bought, came, accounted*","**respectively** lists two figures in the same order as the categories"],
+   compare:["Does Body 1 use only the sales figures?","Did you make at least two comparisons in Body 1?","Does Body 2 start with a signal phrase and use percentages?","Did you check every verb ending (sold, bought, made)?"]},
+
+  {id:"t3",kind:"pair",minutes:12,minWords:90,title:"Sport by age group and popular sports",graphs:["b3","c3"],
+   steps:["Step 1 · Sort the sentences — which THREE belong in Body 1 (the bar chart)?","Step 2 · Choose the correct grammar for a change","Step 3 · Fix the error","Step 4 · Write Body 1 and Body 2"],
+   prompt:"The bar chart shows the percentage of people in four age groups who did sport at least once a week in 2015 and 2025. The pie chart shows the most popular sports in 2025. Write the two body paragraphs only (about 100–130 words).",
+   features:{q:"Choose the THREE sentences that belong in Body 1 (the bar chart).",
+     options:["In 2015, 60% of people aged 15 to 24 did sport every week.","The figure for the 40–59 group rose by 15 percentage points.","Participation was lowest among people aged 60 and over in both years.","Football was the most popular sport in 2025.","Overall, more people did sport in 2025 than in 2015.","Sport should be free for older people."],
+     answers:["In 2015, 60% of people aged 15 to 24 did sport every week.","The figure for the 40–59 group rose by 15 percentage points.","Participation was lowest among people aged 60 and over in both years."],
+     why:"Body 1 is the bar chart. Football belongs to the pie chart, the “Overall” sentence is the overview, and the last is an opinion."},
+   intro:{q:"Which sentence is grammatically correct?",
+     options:["The figure for people aged 40 to 59 rose by 15 percentage points, from 30% to 45%.","The figure for people aged 40 to 59 rose with 15 percentage points, from 30% to 45%.","The figure for people aged 40 to 59 rose by 15 percents, from 30% to 45%."],
+     answer:"The figure for people aged 40 to 59 rose by 15 percentage points, from 30% to 45%.",
+     why:"Changes take “by”, and the difference between two percentages is measured in percentage points."},
+   overview:{q:"Fix the error: “Quarter of the people surveyed was choosed swimming.”",
+     options:["A quarter of the people surveyed chose swimming.","A quarter of the people surveyed was choose swimming.","Quarter of the people surveyed chose swimming."],
+     answer:"A quarter of the people surveyed chose swimming.",
+     why:"Fractions need “a”, the verb is plural after “a quarter of the people”, and the past simple of choose is “chose”."},
+   language:["rose by … percentage points","compared with","the lowest figure","in both years","Turning to the pie chart,","accounted for","followed by","the remaining"],
+   starters:["In 2015, 60% of people aged 15 to 24 did sport at least once a week, compared with…","By 2025, this figure had risen to…","The biggest increase was among people aged 40 to 59, whose figure rose by…","Participation remained lowest among people aged 60 and over…","Turning to the pie chart, football accounted for…","Finally, the remaining 10%…"],
+   targets:[{label:"past simple verbs",re:"\\b(was|were|did|rose|remained|accounted|chose|made|represented)\\b"},{label:"rose by / from … to",re:"\\bby \\d+|from \\d+% to \\d+%"},{label:"percentage points",re:"percentage points?"},{label:"accounted for / made up",re:"account(s|ed)? for|made up|represent"},{label:"a fraction (quarter / fifth)",re:"quarter|fifth|third|\\bhalf\\b"},{label:"a signal phrase for the pie chart",re:"turning to|as for|in terms of|meanwhile"},{label:"3+ linking words",re:"\\b(however|in contrast|meanwhile|similarly|in addition|as a result|whereas|while|turning to|finally|therefore)\\b",min:3}],
+   sample:[
+     {label:"Body 1 (bar chart)",text:"((In 2015,)) 60% of people aged 15 to 24 did sport at least once a week, [[compared with]] only 15% of those aged 60 and over. ((By 2025,)) participation [[had risen]] in every age group: the youngest group reached 70%, ((while)) [[the figure for]] people aged 25 to 39 [[rose by]] 10 percentage points to 55%. ((However,)) the largest increase was among people aged 40 to 59, ((whose)) figure [[grew]] from 30% to 45%. Participation remained [[the lowest]] among the over-60s in both years."},
+     {label:"Body 2 (pie chart)",text:"((Turning to the pie chart,)) football was [[the most popular]] sport in 2025, ((accounting for)) 30% of the total. Swimming came second, ((followed by)) running, ((with)) [[a quarter]] and [[a fifth]] of people [[respectively]]. The gym [[attracted]] 15%, ((while)) [[the remaining]] 10% chose other sports. ((In other words,)) football and swimming together [[made up]] [[more than half]] of all sport."}],
+   notes:["**rose by** 10 **percentage points** (not “10 percents”)","**the figure for** + group","**whose** adds detail about a group: *people aged 40 to 59, **whose** figure grew*","**a quarter / a fifth of** + plural noun + plural verb","past simple throughout: *did, rose, grew, chose*"],
+   compare:["Did you use percentage points for the changes?","Did you compare the age groups, not just list them?","Does Body 2 begin with a signal phrase?","Did you check “a quarter of the people **chose**”?"]},
+
+  {id:"t4",kind:"pair",minutes:12,minWords:90,title:"Electricity production and use",graphs:["b4","c4"],
+   steps:["Step 1 · Sort the sentences — which THREE belong in Body 1 (the bar chart)?","Step 2 · Choose the correct tense and noun","Step 3 · Fix the error","Step 4 · Write Body 1 and Body 2"],
+   prompt:"The bar chart shows how much electricity one country produced from four sources in 2010 and 2025. The pie chart shows where that electricity was used in 2025. Write the two body paragraphs only (about 100–130 words).",
+   features:{q:"Choose the THREE sentences that belong in Body 1 (the bar chart).",
+     options:["Gas was the main source of electricity in both years.","Production from solar power rose from 10 to 90 TWh.","Coal was the only source that fell over the period.","Homes used 35% of the electricity produced.","Overall, the country moved towards renewable energy.","The country should close its coal plants."],
+     answers:["Gas was the main source of electricity in both years.","Production from solar power rose from 10 to 90 TWh.","Coal was the only source that fell over the period."],
+     why:"Body 1 covers production (the bar chart). “Homes used 35%” is pie chart data, the “Overall” sentence is the overview, and the last is an opinion."},
+   intro:{q:"Which sentence is grammatically correct?",
+     options:["By 2025, the amount of electricity produced from solar power had risen to 90 TWh.","By 2025, the number of electricity produced from solar power had risen to 90 TWh.","By 2025, the amount of electricity produced from solar power has risen to 90 TWh."],
+     answer:"By 2025, the amount of electricity produced from solar power had risen to 90 TWh.",
+     why:"Electricity is uncountable, so use “the amount of”, and “by + year” takes the past perfect."},
+   overview:{q:"Fix the error: “Industry used 30% of the electricity, which it was less than homes.”",
+     options:["Industry used 30% of the electricity, which was less than homes.","Industry used 30% of the electricity, which it was fewer than homes.","Industry used 30% of the electricity, that was less than homes."],
+     answer:"Industry used 30% of the electricity, which was less than homes.",
+     why:"After “which” you do not repeat the subject, and electricity is uncountable, so use “less”, not “fewer”."},
+   language:["the amount of","had risen","fell from … to","by far the largest","Turning to the pie chart,","accounted for","less than","the remaining"],
+   starters:["In 2010, gas was the main source of electricity, at…","By 2025, the amount of electricity produced from solar power had risen to…","Wind power also grew, from … to …","In contrast, coal was the only source that fell, dropping from…","Turning to the pie chart, homes used…","Finally, transport accounted for only…"],
+   targets:[{label:"past simple / past perfect",re:"\\b(was|were|rose|fell|grew|used|had (risen|fallen|grown))\\b"},{label:"the amount of",re:"the amount of"},{label:"from … to / by",re:"from \\d+ ?[a-z]* to \\d+|\\bby \\d+"},{label:"accounted for / used",re:"account(s|ed)? for|\\bused\\b|made up"},{label:"less / fewer / more than",re:"(less|fewer|more) than"},{label:"a signal phrase for the pie chart",re:"turning to|as for|in terms of|meanwhile"},{label:"3+ linking words",re:"\\b(however|in contrast|meanwhile|similarly|in addition|as a result|whereas|while|turning to|finally|therefore)\\b",min:3}],
+   sample:[
+     {label:"Body 1 (bar chart)",text:"((In 2010,)) gas was [[by far the largest]] source of electricity, ((producing)) 120 TWh, [[compared with]] 80 TWh from coal. ((By 2025,)) gas production [[had risen]] to 150 TWh, ((while)) [[the amount of]] electricity generated from solar power [[grew]] from 10 to 90 TWh. Wind power also [[increased]], ((rising by)) 40 TWh to reach 60 TWh. ((In contrast,)) coal was the only source that [[fell]], ((dropping)) from 80 to 30 TWh over the period."},
+     {label:"Body 2 (pie chart)",text:"((Turning to the pie chart,)) homes [[accounted for]] 35% of the electricity used in 2025, [[the largest share]] of the total. Industry [[used]] 30%, ((which was)) slightly [[less than]] homes, ((while)) services [[made up]] [[a quarter]]. ((Finally,)) transport [[represented]] only 10%, [[the smallest segment]] of the chart. ((Therefore,)) homes and industry together [[consumed]] [[almost two thirds]] of the country's electricity."}],
+   notes:["**the amount of** + uncountable noun (electricity)","**by 2025** + past perfect: *had risen*","**less than** for uncountable, **fewer than** for countable","**which was** — no repeated subject after *which*","**rising by** 40 TWh (the size of the change)"],
+   compare:["Does Body 1 describe production only?","Did you use “the amount of” for electricity?","Did you use the past perfect after “by 2025”?","Does Body 2 use percentages and a fraction?"]}
+],
+exam:[
+  {id:"x1",kind:"pair",minutes:12,minWords:90,title:"Exam task: students' time and pocket money",graphs:["xb","xc"],
+   prompt:"The bar chart shows the average number of hours per day that students spent on four activities on a weekday and at the weekend. The pie chart shows how they spent their pocket money in 2025. Write the two body paragraphs only, in 12 minutes (about 100–130 words).",
+   language:["compared with","twice as long as","fell from … to","which was","Turning to the pie chart,","accounted for","made up","the remaining"],
+   starters:["On a weekday, students spent five hours studying, compared with…","At the weekend, this figure fell to…","In contrast, time spent on screens rose from…","Time with family also increased, from … to …","Turning to the pie chart, food accounted for…","Finally, the remaining 10% was saved."],
+   targets:[{label:"past simple verbs",re:"\\b(was|were|spent|rose|fell|accounted|made|represented|increased)\\b"},{label:"compared with / than",re:"compared (with|to)|\\bthan\\b"},{label:"from … to / by",re:"from [\\w,]+ ?[a-z]* to [\\w,]+|\\bby \\d+"},{label:"accounted for / made up",re:"account(s|ed)? for|made up|represent"},{label:"a fraction (third / fifth)",re:"quarter|third|fifth|\\bhalf\\b"},{label:"a signal phrase for the pie chart",re:"turning to|as for|in terms of|meanwhile"},{label:"4+ linking words",re:"\\b(however|in contrast|meanwhile|similarly|in addition|as a result|whereas|while|turning to|finally|therefore|in other words)\\b",min:4}],
+   sample:[
+     {label:"Body 1 (bar chart)",text:"((On a weekday,)) students spent five hours studying, [[compared with]] just two hours at the weekend. ((In contrast,)) time spent on screens [[rose]] from three hours during the week to five hours at the weekend, ((which was)) [[the highest figure]] on the chart. Time with family also [[increased]], ((doubling)) from two to four hours. ((Meanwhile,)) sport [[remained]] [[the least common]] activity, ((although)) the figure [[rose]] slightly from one hour to two."},
+     {label:"Body 2 (pie chart)",text:"((Turning to the pie chart,)) food [[accounted for]] 35% of the students' pocket money in 2025, [[the largest share]] of the total. Transport and clothes each [[made up]] [[a fifth]], ((while)) entertainment [[represented]] 15%. ((Finally,)) [[the remaining]] 10% was saved, [[the smallest segment]] of the chart. ((In other words,)) [[more than half]] of the money was spent on food and transport."}],
+   notes:["**compared with** links two figures in one sentence","**which was** adds the comparison to the figure before it","**each made up** + a fraction for two equal slices","past simple for all the data: *spent, rose, increased, remained*","**the remaining** 10% + singular verb *was*"],
+   compare:["Did you write both paragraphs in 12 minutes?","Does Body 1 compare weekdays with weekends?","Does Body 2 start with a signal phrase?","Did you check tenses, articles and prepositions before finishing?"]}
+]
+};
+</script>
+<script>(function(){
+"use strict";
+const A = window.APPDATA;
+const $ = (s,r=document)=>r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const L = { graphs: A.graphs, theme: A.theme };
+
+/* ---------- theme ---------- */
+const T = A.theme, root = document.documentElement.style;
+for (const k in T) root.setProperty("--"+k, T[k]);
+
+/* ---------- state ---------- */
+let S = { v:1, app:A.id, ans:{}, seen:{}, w:{}, rev:{}, cmp:{}, name:"", order:{}, cur:A.tasks[0].id, curX:A.exam[0].id };
+let step = "guide", timer = null;
+const stepNames = [["guide","Structure","البنية"],["bank","Grammar","القواعد"],["practice","Practice","تدرّب"],["exam","Exam practice","محاكاة الامتحان"],["finish","Finish","النهاية"]];
+const taskById = id => A.tasks.concat(A.exam).find(t=>t.id===id);
+
+/* ---------- graphs ---------- */
+const W=640,H=370;
+function niceNum(n){ return Number.isInteger(n)? n.toLocaleString("en-US") : String(n); }
+function renderGraph(cfg, hl=[] , opts={}){
+  if(cfg.type==="pie") return renderPies(cfg,hl);
+  const m={l:70,r:24,t:26,b:cfg.series.length>1?92:62};
+  const pw=W-m.l-m.r, ph=H-m.t-m.b;
+  const y0=cfg.yMin||0, y1=cfg.yMax, step=cfg.yStep;
+  const Y=v=>m.t+ph-(v-y0)/(y1-y0)*ph;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.title)}" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,Verdana,sans-serif">`;
+  for(let v=y0; v<=y1+1e-9; v+=step){
+    const y=Y(v);
+    s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y}" y2="${y}" stroke="#e5e7ef" stroke-width="1"/>`;
+    s+=`<text x="${m.l-8}" y="${y+5}" text-anchor="end" font-size="15" fill="#555">${niceNum(Math.round(v*100)/100)}${cfg.ySuffix||""}</text>`;
+  }
+  s+=`<line x1="${m.l}" x2="${m.l}" y1="${m.t}" y2="${m.t+ph}" stroke="#333" stroke-width="2"/>`;
+  s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${m.t+ph}" y2="${m.t+ph}" stroke="#333" stroke-width="2"/>`;
+  s+=`<text transform="translate(16 ${m.t+ph/2}) rotate(-90)" text-anchor="middle" font-size="15" fill="#333" font-weight="700">${esc(cfg.unit)}</text>`;
+  const n=cfg.x.length;
+  if(cfg.type==="line"){
+    const X=i=>m.l+ (n===1?pw/2: i*(pw-30)/(n-1)+15);
+    cfg.x.forEach((lab,i)=>{ s+=`<text x="${X(i)}" y="${m.t+ph+22}" text-anchor="middle" font-size="15" fill="#333">${esc(lab)}</text>`; });
+    // highlights under lines
+    hl.forEach(h=>{
+      if(h.k==="seg"||h.k==="ser"){
+        const ser=cfg.series[h.s], a=h.k==="ser"?0:h.a, b=h.k==="ser"?n-1:h.b;
+        const pts=[]; for(let i=a;i<=b;i++) pts.push(`${X(i)},${Y(ser.values[i])}`);
+        s+=`<polyline class="hl" points="${pts.join(" ")}" fill="none" stroke="var(--sec)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>`;
+      }
+    });
+    cfg.series.forEach((ser,si)=>{
+      const pts=ser.values.map((v,i)=>`${X(i)},${Y(v)}`).join(" ");
+      s+=`<polyline ${opts.draw?'class="draw"':''} points="${pts}" fill="none" stroke="${ser.color}" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" ${ser.dash?'stroke-dasharray="8 6"':''}/>`;
+      ser.values.forEach((v,i)=>{ s+=`<circle cx="${X(i)}" cy="${Y(v)}" r="4.5" fill="#fff" stroke="${ser.color}" stroke-width="2.5"><title>${esc(ser.name)} ${esc(cfg.x[i])}: ${niceNum(v)}${cfg.ySuffix||""}</title></circle>`; });
+    });
+    hl.forEach(h=>{ if(h.k==="pt"){ const v=cfg.series[h.s].values[h.i];
+      s+=`<circle class="hl" cx="${X(h.i)}" cy="${Y(v)}" r="15" fill="var(--sec)"/>`;
+      s+=`<circle cx="${X(h.i)}" cy="${Y(v)}" r="6" fill="${cfg.series[h.s].color}"/>`; }});
+  } else { // bar
+    const gw=pw/n, ns=cfg.series.length, bw=Math.min(46,(gw*0.72)/ns);
+    cfg.x.forEach((lab,g)=>{
+      const cx=m.l+gw*g+gw/2;
+      s+=`<text x="${cx}" y="${m.t+ph+22}" text-anchor="middle" font-size="15" fill="#333">${esc(lab)}</text>`;
+      cfg.series.forEach((ser,si)=>{
+        const v=ser.values[g], x=cx-(ns*bw)/2+si*bw, y=Y(v), hgt=m.t+ph-y;
+        const on=hl.some(h=>h.k==="bar"&&h.g===g&&h.s===si);
+        if(on) s+=`<rect class="hl" x="${x-5}" y="${y-5}" width="${bw+10}" height="${hgt+5}" rx="6" fill="var(--sec)"/>`;
+        s+=`<rect x="${x+1}" y="${y}" width="${bw-2}" height="${hgt}" rx="3" fill="${ser.color}"><title>${esc(ser.name)} ${esc(lab)}: ${niceNum(v)}</title></rect>`;
+        s+=`<text x="${x+bw/2}" y="${y-6}" text-anchor="middle" font-size="14" font-weight="700" fill="#333">${niceNum(v)}${cfg.ySuffix||""}</text>`;
+      });
+    });
+  }
+  if(cfg.series.length>1){
+    let lx=m.l, ly=H-22;
+    cfg.series.forEach(ser=>{
+      s+=`<rect x="${lx}" y="${ly-11}" width="22" height="12" rx="3" fill="${ser.color}"/><text x="${lx+28}" y="${ly}" font-size="15" fill="#333">${esc(ser.name)}</text>`;
+      lx+=44+ser.name.length*8.4;
+    });
+  }
+  if(cfg.xLabel) s+=`<text x="${m.l+pw/2}" y="${m.t+ph+44}" text-anchor="middle" font-size="13" font-weight="700" fill="#333">${esc(cfg.xLabel)}</text>`;
+  return s+"</svg>";
+}
+function renderPies(cfg,hl){
+  const np=cfg.pies.length, w=np===1?560:640, h=np===1?300:360;
+  let s=`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(cfg.title)}" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,Verdana,sans-serif">`;
+  cfg.pies.forEach((p,pi)=>{
+    const cx = np===1?160:(pi===0?160:480), cy = np===1?150:150, R = np===1?120:118;
+    if(p.title) s+=`<text x="${cx}" y="${22}" text-anchor="middle" font-size="18" font-weight="700" fill="#333">${esc(p.title)}</text>`;
+    const tot=p.slices.reduce((a,b)=>a+b.value,0); let ang=-Math.PI/2;
+    const cyy = cy + (p.title?14:0);
+    p.slices.forEach((sl,i)=>{
+      const a0=ang, a1=ang+sl.value/tot*Math.PI*2; ang=a1;
+      const mid=(a0+a1)/2, on=hl.some(hh=>hh.k==="slice"&&hh.p===pi&&hh.i===i);
+      const off=on?12:0, ox=Math.cos(mid)*off, oy=Math.sin(mid)*off;
+      const large=(a1-a0)>Math.PI?1:0;
+      const P=(a,r)=>`${cx+ox+Math.cos(a)*r},${cyy+oy+Math.sin(a)*r}`;
+      const d=`M${cx+ox},${cyy+oy} L${P(a0,R)} A${R},${R} 0 ${large} 1 ${P(a1,R)} Z`;
+      if(on) s+=`<path class="hl" d="M${cx+ox},${cyy+oy} L${P(a0,R+9)} A${R+9},${R+9} 0 ${large} 1 ${P(a1,R+9)} Z" fill="var(--sec)"/>`;
+      s+=`<path d="${d}" fill="${sl.color}" stroke="#fff" stroke-width="2"><title>${esc(sl.label)}: ${sl.value}%</title></path>`;
+      if(sl.value>=8){ const tx=cx+ox+Math.cos(mid)*R*0.64, ty=cyy+oy+Math.sin(mid)*R*0.64+5;
+        s+=`<text x="${tx}" y="${ty}" text-anchor="middle" font-size="17" font-weight="800" fill="#fff" stroke="rgba(0,0,0,.35)" stroke-width="3" paint-order="stroke">${sl.value}%</text>`; }
+    });
+  });
+  // legend
+  const first=cfg.pies[0];
+  if(np===1){
+    first.slices.forEach((sl,i)=>{ const y=60+i*34;
+      s+=`<rect x="320" y="${y-14}" width="22" height="18" rx="4" fill="${sl.color}"/><text x="352" y="${y}" font-size="17" fill="#333">${esc(sl.label)} (${sl.value}%)</text>`; });
+  } else {
+    let lx=40; first.slices.forEach(sl=>{ s+=`<rect x="${lx}" y="${h-28}" width="18" height="14" rx="3" fill="${sl.color}"/><text x="${lx+24}" y="${h-16}" font-size="15" fill="#333">${esc(sl.label)}</text>`; lx+=40+sl.label.length*8.6; });
+    cfg.pies.forEach((p,pi)=>{ const cx=pi===0?160:480;
+      p.slices.forEach(sl=>{ if(sl.value<8){ /* small values listed under pie */ }});
+      const small=p.slices.filter(sl=>sl.value<8).map(sl=>`${sl.label} ${sl.value}%`).join(", ");
+      if(small) s+=`<text x="${cx}" y="${h-44}" text-anchor="middle" font-size="14" fill="#444">${esc(small)}</text>`;
+    });
+  }
+  if(np===1){ const small=first.slices.filter(sl=>sl.value<8); /* legend already lists values */ }
+  return s+"</svg>";
+}
+function graphBox(key,hl,opts){ const c=L.graphs[key]; return `<div class="gbox">${c.title?`<p class="gtitle">${esc(c.title)}</p>`:""}${renderGraph(c,hl,opts)}</div>`; }
+
+/* mini icons for word cards */
+function icon(ic){
+  const C1="var(--pri)", C2="var(--sec)";
+  let s=`<svg viewBox="0 0 92 62" aria-hidden="true">`;
+  if(!ic) return s+"</svg>";
+  if(ic.t==="line"){ const p=ic.p, n=p.length; s+=`<line x1="8" y1="4" x2="8" y2="56" stroke="#999" stroke-width="2"/><line x1="8" y1="56" x2="88" y2="56" stroke="#999" stroke-width="2"/>`;
+    const pts=p.map((v,i)=>`${14+i*(70/(n-1))},${52-v*4.6}`).join(" ");
+    s+=`<polyline points="${pts}" fill="none" stroke="${C1}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`;
+    if(ic.h!=null){ const i=ic.h; s+=`<circle cx="${14+i*(70/(n-1))}" cy="${52-p[i]*4.6}" r="6" fill="${C2}"/>`; }
+    if(ic.p2){ const pts2=ic.p2.map((v,i)=>`${14+i*(70/(n-1))},${52-v*4.6}`).join(" "); s+=`<polyline points="${pts2}" fill="none" stroke="${C2}" stroke-width="4" stroke-linecap="round"/>`; }
+  } else if(ic.t==="bars"){ const v=ic.v, n=v.length, bw=64/n;
+    s+=`<line x1="8" y1="56" x2="88" y2="56" stroke="#999" stroke-width="2"/>`;
+    v.forEach((x,i)=>{ const hh=x*4.8; s+=`<rect x="${14+i*bw}" y="${56-hh}" width="${bw-5}" height="${hh}" rx="2" fill="${ic.h===i||(ic.h2===i)?C2:C1}"/>`; });
+  } else if(ic.t==="pie"){ const v=ic.v, tot=v.reduce((a,b)=>a+b,0); let a=-Math.PI/2;
+    v.forEach((x,i)=>{ const a1=a+x/tot*2*Math.PI, lg=(a1-a)>Math.PI?1:0;
+      const P=an=>`${46+Math.cos(an)*27},${31+Math.sin(an)*27}`;
+      s+=`<path d="M46,31 L${P(a)} A27,27 0 ${lg} 1 ${P(a1)} Z" fill="${ic.h===i?C2:(i%2?"#cbd2e1":"#9aa3b8")}" stroke="#fff" stroke-width="1.5"/>`; a=a1; });
+  } else if(ic.t==="axis"){ s+=`<line x1="14" y1="4" x2="14" y2="54" stroke="${ic.d==="v"?C2:"#999"}" stroke-width="${ic.d==="v"?6:2}"/><line x1="14" y1="54" x2="88" y2="54" stroke="${ic.d==="h"?C2:"#999"}" stroke-width="${ic.d==="h"?6:2}"/>`;
+  } else if(ic.t==="txt"){ s+=`<text x="46" y="42" text-anchor="middle" font-size="${ic.fs||30}" font-weight="800" fill="${C1}" font-family="Trebuchet MS,sans-serif">${esc(ic.s)}</text>`; }
+  return s+"</svg>";
+}
+
+/* ---------- speech ---------- */
+function say(t){ try{ if(!window.speechSynthesis) return; const u=new SpeechSynthesisUtterance(t); u.lang="en-GB"; u.rate=.9; speechSynthesis.cancel(); speechSynthesis.speak(u);}catch(e){} }
+
+/* ---------- MCQ ---------- */
+function orderFor(key, opts){ // stable shuffled order saved in state
+  if(!S.order[key] || S.order[key].length!==opts.length) S.order[key]=shuffle(opts.map((_,i)=>i));
+  return S.order[key].map(i=>opts[i]);
+}
+function mcq(key, qHtml, options, answer, why, extra=""){
+  const a=S.ans[key]; const shown=orderFor(key,options);
+  let h=`<div class="q" id="q-${key}">${extra}<p class="qt">${qHtml}</p><div class="opts ${shown.some(o=>o.length>40)?"col":""}">`;
+  shown.forEach(o=>{
+    let cls="opt";
+    if(a&&a.done){ if(o===answer) cls+=" right"; else if(o===a.chosen) cls+=" wrong"; else cls+=" dim"; }
+    h+=`<button class="${cls}" data-key="${key}" data-val="${esc(o)}" ${a&&a.done?"disabled":""}>${esc(o)}</button>`;
+  });
+  h+=`</div><div class="fb ${a&&a.done?"show "+(a.pts?"good":"bad"):""}">${a&&a.done?(a.pts?"✅ Correct! ":"❌ The answer is <b>"+esc(answer)+"</b>. ")+esc(why||""):""}</div></div>`;
+  return h;
+}
+function fillBlank(q, a, answer){ return esc(q).replace("___", `<span class="blank">${a&&a.done?esc(answer):"&nbsp;"}</span>`); }
+function bindMcq(container, lookup){
+  container.querySelectorAll(".opt[data-key]").forEach(b=>b.addEventListener("click",()=>{
+    const key=b.dataset.key, item=lookup(key); if(S.ans[key]&&S.ans[key].done) return;
+    const ok=b.dataset.val===item.answer;
+    S.ans[key]={done:true, pts: ok?1:0, chosen:b.dataset.val};
+    if(ok) miniBurst(b);
+    persistAndRerender(key);
+  }));
+}
+
+
+function rich(t){ return esc(t).replace(/\(\((.+?)\)\)/g,'<span class="tr">$1</span>').replace(/\[\[(.+?)\]\]/g,'<mark>$1</mark>').replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/\{\{(.+?)\|(\d)\}\}/g,'<span class="seg s$2">$1</span>'); }
+const markSample = t => esc(t).replace(/\(\((.+?)\)\)/g,'<span class="tr">$1</span>').replace(/\[\[(.+?)\]\]/g,'<mark>$1</mark>');
+const plain = t => t.replace(/\(\((.+?)\)\)/g,"$1").replace(/\[\[(.+?)\]\]/g,"$1");
+const sampleWords = t => t.sample.map(p=>plain(p.text)).join(" ").split(/\s+/).filter(Boolean).length;
+
+/* ---------- scoring ---------- */
+function scoredKeys(){
+  const k=[];
+  A.bankQuiz.forEach((_,i)=>k.push("q:"+i));
+  A.tasks.forEach(t=>{ k.push("f:"+t.id, "i:"+t.id, "o:"+t.id); });
+  return k;
+}
+function score(){ const keys=scoredKeys(); let pts=0, done=0;
+  keys.forEach(k=>{const a=S.ans[k]; if(a&&a.done){done++; pts+=a.pts;}});
+  return {pts, total:keys.length, done, pct: Math.round(pts/keys.length*100)};
+}
+function lookup(key){
+  const [kind,id]=key.split(":");
+  if(kind==="q") return A.bankQuiz[+id];
+  const t=taskById(id);
+  return kind==="f"? t.features : kind==="i"? t.intro : t.overview;
+}
+function wordsOf(id){ return (S.w[id]||"").split(/\s+/).filter(Boolean).length; }
+function writingDone(t){ return wordsOf(t.id) >= t.minWords; }
+function isStepDone(id){
+  switch(id){
+    case "guide": return A.guide.every((_,i)=>S.seen[i]);
+    case "bank": return A.bankQuiz.every((_,i)=>{const a=S.ans["q:"+i]; return a&&a.done;});
+    case "practice": return A.tasks.every(t=>["f","i","o"].every(p=>{const a=S.ans[p+":"+t.id]; return a&&a.done;}) && writingDone(t));
+    case "exam": return A.exam.every(writingDone);
+    default: return false;
+  }
+}
+function updateChip(){ const s=score(); $("#chip").textContent=`⭐ ${Math.round(s.pts*10)/10} / ${s.total}`;
+  document.querySelectorAll(".rail button").forEach(b=>b.classList.toggle("done", isStepDone(b.dataset.step))); }
+
+/* ---------- shared bits ---------- */
+function multiHtml(key,it,extra=""){
+  const a=S.ans[key]||{}; const sel=a.sel||[]; const shown=orderFor(key,it.options); const need=it.answers.length;
+  let h=`<div class="q" id="q-${key.replace(':','-')}">${extra}<p class="qt">${esc(it.q)}</p><div class="opts col">`;
+  shown.forEach(o=>{ let cls="opt pickm"; const on=sel.includes(o), right=it.answers.includes(o);
+    if(a.done){ cls+= right? (on?" right":" missed") : (on?" wrong":" dim"); } else if(on) cls+=" on";
+    h+=`<button class="${cls}" data-mk="${key}" data-val="${esc(o)}" ${a.done?"disabled":""}>${a.done?(right?"✔ ":on?"✘ ":""):(on?"☑ ":"☐ ")}${esc(o)}</button>`; });
+  h+=`</div>`;
+  if(!a.done) h+=`<p class="hint">Chosen: ${sel.length} / ${need}</p><button class="act" data-mcheck="${key}" ${sel.length===need?"":"disabled"}>Check</button>`;
+  else h+=`<div class="fb show ${a.pts===1?"good":"bad"}">${a.pts===1?"✅ All correct! ":`You scored ${Math.round(a.pts*100)}%. The green answers are the key features. `}${esc(it.why||"")}</div>`;
+  return h+`</div>`;
+}
+function matchHtml(key,it){
+  const a=S.ans[key]||{}; const n=it.pairs.length;
+  if(!S.order[key]||S.order[key].length!==n) S.order[key]=shuffle(it.pairs.map((_,i)=>i));
+  const got=a.got||[];
+  let h=`<div class="q" id="q-${key.replace(':','-')}"><p class="qt">${esc(it.title)}</p><div class="match" data-key="${key}"><div class="colm">`;
+  it.pairs.forEach((p,i)=>{ h+=`<button class="mbtn ${got.includes(i)?"ok":""}" data-l="${i}" ${got.includes(i)?"disabled":""}>${esc(p[0])}</button>`; });
+  h+=`</div><div class="colm">`;
+  S.order[key].forEach(i=>{ h+=`<button class="mbtn ${got.includes(i)?"ok":""} ${it.rtl?"ar":""}" data-r="${i}" ${got.includes(i)?"disabled":""}>${esc(it.pairs[i][1])}</button>`; });
+  h+=`</div></div>`;
+  if(a.done) h+=`<div class="fb show ${a.pts>=0.8?"good":"bad"}">Finished with ${a.miss||0} mistake${a.miss===1?"":"s"}. Score: ${Math.round(a.pts*100)}%</div>`;
+  return h+`</div>`;
+}
+
+/* ---------- panels ---------- */
+function pGuide(){
+  let h=`<section class="panel"><h3>Structure of the body</h3><p class="lead">Your two body paragraphs carry all the data. Learn the shape of each one, then how to join them in one report. Read each card and press <b>Got it</b>.<span class="ar">في الامتحان ستصف مخططًا بالأعمدة ومخططًا دائريًا. اقرأ كل بطاقة واضغط «فهمت».</span></p><p class="hint" id="seencount">Cards read: ${Object.keys(S.seen).length} / ${A.guide.length}</p>`;
+  A.guide.forEach((c,i)=>{
+    h+=`<article class="lcard ${S.seen[i]?"seen":""}"><div class="lhead"><span class="lnum">${i+1}</span><h4>${esc(c.t)}</h4></div>`;
+    if(c.ar) h+=`<p class="ar lar">${esc(c.ar)}</p>`;
+    (c.body||[]).forEach(b=>h+=`<p>${rich(b)}</p>`);
+    if(c.list) h+=`<ul class="llist">${c.list.map(x=>`<li>${rich(x)}</li>`).join("")}</ul>`;
+    if(c.rows) h+=`<div class="ltable"><table>${c.head?`<tr>${c.head.map(x=>`<th>${esc(x)}</th>`).join("")}</tr>`:""}${c.rows.map(r=>`<tr>${r.map(x=>`<td dir="auto">${rich(x)}</td>`).join("")}</tr>`).join("")}</table></div>`;
+    if(c.graph) h+=`<div style="max-width:470px">${graphBox(c.graph,[])}</div>`;
+    (c.ex||[]).forEach(e=>h+=`<div class="lex ${e.kind||""}"><b>${esc(e.label)}</b><div>${rich(e.text)}</div></div>`);
+    h+=`<button class="act ${S.seen[i]?"alt":""}" data-got="${i}">${S.seen[i]?"✔ Got it":"Got it"}</button></article>`;
+  });
+  return h+nav()+`</section>`;
+}
+function pBank(){
+  let h=`<section class="panel"><h3>Grammar bank</h3><p class="lead">The grammar you need inside a body paragraph: tenses, agreement, articles, prepositions, comparatives and fractions. Search it, then do the drills below.<span class="ar">القواعد التي تحتاجها داخل فقرة التفاصيل: الأزمنة والمطابقة وأدوات التعريف وحروف الجر والمقارنات والكسور.</span></p>`;
+  h+=`<input id="bsearch" class="search" placeholder="Search a word, e.g. account for" autocomplete="off">`;
+  A.bank.forEach((sec,si)=>{
+    h+=`<h4 class="bsec">${esc(sec.t)}</h4><div class="ltable"><table>${sec.head?`<tr>${sec.head.map(x=>`<th>${esc(x)}</th>`).join("")}</tr>`:""}`;
+    sec.rows.forEach(r=>{ h+=`<tr class="brow" data-txt="${esc(r.join(" ").toLowerCase())}">${r.map(x=>`<td dir="auto">${rich(x)}</td>`).join("")}</tr>`; });
+    h+=`</table></div>`;
+  });
+  h+=`<h3 style="font-family:var(--head);color:var(--pri-dark);margin-top:26px">Grammar drills</h3>`;
+  A.bankQuiz.forEach((it,i)=>{ const key="q:"+i;
+    if(it.type==="match") h+=matchHtml(key,it);
+    else if(it.type==="multi") h+=multiHtml(key,it);
+    else h+=mcq(key, `<span class="qn">${i+1}</span>`+(it.q.includes("___")?fillBlank(it.q,S.ans[key],it.answer):esc(it.q)), it.options, it.answer, it.why);
+  });
+  return h+nav()+`</section>`;
+}
+function taskView(t, exam){
+  const fk="f:"+t.id, ik="i:"+t.id, ok="o:"+t.id;
+  let h=`<div class="taskwrap"><div class="tasktop"><span class="kind">Bar chart + pie chart</span><h4>${esc(t.title)}</h4></div>`;
+  h+=`<div class="task"><b>Task:</b> ${esc(t.prompt)}</div>`;
+  h+=`<div class="tgrid"><div class="gstick">${t.graphs.map((g,i)=>`<div class="chartwrap"><span class="clabel">Chart ${i+1} · ${L.graphs[g].type==="bar"?"bar chart":"pie chart"}</span>${graphBox(g,[])}</div>`).join("")}${timerHtml(t)}</div><div>`;
+  if(!exam){
+    h+=`<p class="stepline"><b>${esc(t.steps[0])}</b></p>`+multiHtml(fk,t.features);
+    h+=`<p class="stepline"><b>${esc(t.steps[1])}</b></p>`+mcq(ik,esc(t.intro.q),t.intro.options,t.intro.answer,t.intro.why);
+    h+=`<p class="stepline"><b>${esc(t.steps[2])}</b></p>`+mcq(ok,esc(t.overview.q),t.overview.options,t.overview.answer,t.overview.why);
+    h+=`<p class="stepline"><b>${esc(t.steps[3])}</b></p>`;
+  } else {
+    h+=`<p class="stepline"><b>Exam conditions</b> — you have ${t.minutes} minutes to write both body paragraphs. No help until you finish.</p>`;
+  }
+  h+=`<div class="linkers"><b>Useful language for this task</b><div>${t.language.map(x=>`<span class="lk">${esc(x)}</span>`).join("")}</div></div>`;
+  if(t.starters) h+=`<details class="starters"><summary><b>Stuck? Sentence frames</b></summary><ul>${t.starters.map(s=>`<li>${esc(s)}</li>`).join("")}</ul></details>`;
+  const st=writeStats(t);
+  h+=`<div class="targets" id="tg-${t.id}">${t.targets.map((tg,i)=>`<span class="tg ${st.hits[i]?"on":""}">${esc(tg.label)}</span>`).join("")}</div>`;
+  h+=`<textarea class="writing" data-t="${t.id}" placeholder="Body 1 (bar chart)… then Body 2 (pie chart)…">${esc(S.w[t.id]||"")}</textarea>`;
+  h+=`<p><span class="wc">${st.wc}</span> words (at least ${t.minWords}) · <span class="wstat">${st.wc>=t.minWords?"✅ Long enough":""}</span> · <button class="act alt small" data-dl="${t.id}">Download</button></p>`;
+  h+=`</div></div><div class="samplezone" data-sz="${t.id}">${sampleZone(t)}</div></div>`;
+  return h;
+}
+function timerHtml(t){
+  const left = S.times && S.times[t.id]!==undefined ? S.times[t.id] : t.minutes*60;
+  const m=String(Math.floor(left/60)).padStart(2,"0"), s=String(left%60).padStart(2,"0");
+  return `<div class="timer"><span class="clock" id="clock-${t.id}">${m}:${s}</span>
+    <button class="act small" data-tstart="${t.id}">${timer&&timer.id===t.id?"Pause":"Start"}</button>
+    <button class="act alt small" data-treset="${t.id}">Reset</button>
+    <span class="hint">${t.minutes} minutes</span></div>`;
+}
+function writeStats(t){ const txt=S.w[t.id]||""; const wc=txt.split(/\s+/).filter(Boolean).length;
+  const hits=t.targets.map(tg=>tg.min? ((txt.match(new RegExp(tg.re,"gi"))||[]).length>=tg.min) : new RegExp(tg.re,"i").test(txt));
+  return {wc,hits}; }
+function sampleZone(t){
+  const st=writeStats(t);
+  if(!S.rev[t.id]){
+    const ready=st.wc>=t.minWords;
+    return `<div class="reveal"><p><b>Finished?</b> Compare your paragraphs with a Band 6.5 sample.</p>
+      <button class="act" data-rev="${t.id}" ${ready?"":"disabled"}>Compare with the sample answer</button>
+      <span class="hint">${ready?"":`Write at least ${t.minWords} words to unlock it.`}</span></div>`;
+  }
+  const cmp=S.cmp[t.id]||{};
+  return `<div class="compare"><h4>Sample answer (${sampleWords(t)} words)</h4>
+    <p class="hint"><mark>Yellow</mark> = chart language. <span class="tr">Pink</span> = linking words.</p>
+    <div class="grid2"><div class="mine"><span class="lab">Your answer</span><div class="txt">${esc(S.w[t.id]||"")}</div><p class="hint">${st.wc} words</p></div>
+    <div class="sample">${t.sample.map(p=>`<div class="para"><span class="lab">${esc(p.label)}</span><p>${markSample(p.text)}</p></div>`).join("")}</div></div>
+    ${t.notes?`<div class="lex good"><b>Grammar used in the sample</b><ul class="llist">${t.notes.map(n=>`<li>${rich(n)}</li>`).join("")}</ul></div>`:""}
+    <div class="check"><b>Compare your answer</b>${t.compare.map((c,i)=>`<label><input type="checkbox" data-cmp="${t.id}" data-i="${i}" ${cmp[i]?"checked":""}> ${esc(c)}</label>`).join("")}</div></div>`;
+}
+function thumb(t,i,on,done,attr,labelPrefix){
+  return `<button class="ttab ${on?"on":""} ${done?"done":""}" data-${attr}="${t.id}" title="${esc(t.title)}">
+    <span class="tlabel">${labelPrefix} ${i+1}${done?" ✔":""}</span>
+    <span class="thumb pair">${t.graphs.map(g=>renderGraph(L.graphs[g],[],{thumb:true})).join("")}</span></button>`;
+}
+function pPractice(){
+  const t=A.tasks.find(x=>x.id===S.cur)||A.tasks[0];
+  let h=`<section class="panel"><h3>Practice</h3><p class="lead">Four guided tasks. Each gives you a bar chart and a pie chart. Sort the sentences, fix the grammar, then write the two body paragraphs of a combined report.<span class="ar">أربع مهام موجّهة. صنّف الجمل، وصحّح القواعد، ثم اكتب فقرتي التفاصيل لتقرير يجمع المخططين.</span></p>`;
+  h+=`<p class="pickline"><b>Choose a task.</b> Every task has a <b>bar chart</b> and a <b>pie chart</b>. You write <b>Body 1</b> about the bar chart and <b>Body 2</b> about the pie chart.</p>`;
+  h+=`<div class="tasktabs">${A.tasks.map((x,i)=>thumb(x,i,x.id===t.id,["f","i","o"].every(p=>{const a=S.ans[p+":"+x.id]; return a&&a.done;}) && writingDone(x),"task","Task")).join("")}</div>`;
+  h+=taskView(t,false);
+  return h+nav()+`</section>`;
+}
+function pExam(){
+  const t=A.exam.find(x=>x.id===S.curX)||A.exam[0];
+  let h=`<section class="panel"><h3>Exam practice</h3><p class="lead">Exam conditions: two charts, two body paragraphs, 12 minutes. Use the timer. No help until you finish.<span class="ar">ظروف الامتحان: مخططان، فقرتا تفاصيل، 12 دقيقة. استخدم المؤقت.</span></p>`;
+  h+=`<p class="pickline"><b>This is the real thing.</b> Two charts, two body paragraphs, 12 minutes.</p>`;
+  h+=`<div class="tasktabs">${A.exam.map((x,i)=>thumb(x,i,x.id===t.id,writingDone(x),"xtask","Exam task")).join("")}</div>`;
+  h+=taskView(t,true);
+  return h+nav()+`</section>`;
+}
+const BADGES=[["guide","📘","Prepared","Read every guide card"],["bank","🔤","Grammar checked","Finished the grammar drills"],
+  ["planner","🎯","Editor","Finished every task step"],["writer","✍️","Writer","Wrote all four practice paragraphs"],["exam","⏱","Exam ready","Finished both exam tasks"]];
+function badgeGot(id){
+  if(id==="planner") return A.tasks.every(t=>["f","i","o"].every(p=>{const a=S.ans[p+":"+t.id]; return a&&a.done;}));
+  if(id==="writer") return A.tasks.every(writingDone);
+  return isStepDone(id);
+}
+function pFinish(){
+  const s=score(), pass=s.pct>=80 && s.done===s.total;
+  let h=`<section class="panel finish"><h3>Finish</h3><p class="lead">Score 80% or more on the grammar drills and the task steps to earn your certificate.<span class="ar">احصل على 80% أو أكثر لتنال شهادتك.</span></p>`;
+  h+=`<div class="scorebig">${s.pct}%</div><div class="bar"><i style="width:${s.pct}%"></i></div><p>${s.done} of ${s.total} scored steps completed.</p>`;
+  h+=`<div class="badges">${BADGES.map(b=>`<div class="badge ${badgeGot(b[0])?"got":""}"><div class="ic">${b[1]}</div><b>${b[2]}</b><small>${b[3]}</small></div>`).join("")}</div>`;
+  h+=`<h4 class="bsec">Your writing</h4>`;
+  h+=`<div class="ltable"><table><tr><th>Task</th><th>Words</th><th>Sample seen</th></tr>${A.tasks.concat(A.exam).map((t,i)=>`<tr><td>${i<A.tasks.length?"Practice":"Exam"} — ${esc(t.title)}</td><td>${wordsOf(t.id)}</td><td>${S.rev[t.id]?"yes":"no"}</td></tr>`).join("")}</table></div>`;
+  h+=`<p><button class="act" id="dlall">Download all my answers</button></p>`;
+  if(pass) h+=`<p><label for="nm"><b>Your full name</b></label><br><input id="nm" value="${esc(S.name||"")}" autocomplete="name"></p><button class="act" id="getcert">Show my certificate</button>`;
+  else if(s.done<s.total) h+=`<p>Finish the grammar drills and all three steps in every practice task to unlock the certificate.</p>`;
+  else h+=`<p>You scored ${s.pct}%. Press <b>Restart</b> at the top to try again and reach 80%.</p>`;
+  return h+nav()+`</section>`;
+}
+function nav(){ const i=stepNames.findIndex(x=>x[0]===step);
+  return `<div class="navrow">${i>0?`<button class="act alt" data-go="${stepNames[i-1][0]}">Back</button>`:"<span></span>"}${i<stepNames.length-1?`<button class="act" data-go="${stepNames[i+1][0]}">Next: ${stepNames[i+1][1]}</button>`:""}</div>`; }
+
+/* ---------- render ---------- */
+function render(keepScroll){
+  const y=window.scrollY;
+  $("#main").innerHTML=({guide:pGuide,bank:pBank,practice:pPractice,exam:pExam,finish:pFinish})[step]();
+  document.querySelectorAll(".rail button").forEach(b=>b.setAttribute("aria-current", b.dataset.step===step?"step":"false"));
+  bind($("#main")); updateChip();
+  if(keepScroll) window.scrollTo(0,y);
+}
+function bind(m){
+  bindMcq(m, lookup);
+  m.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
+  m.querySelectorAll("[data-task]").forEach(b=>b.addEventListener("click",()=>{ S.cur=b.dataset.task; stopTimer(); render(); }));
+  m.querySelectorAll("[data-xtask]").forEach(b=>b.addEventListener("click",()=>{ S.curX=b.dataset.xtask; stopTimer(); render(); }));
+  m.querySelectorAll("[data-got]").forEach(b=>b.addEventListener("click",()=>{ const was=isStepDone("guide"); S.seen[b.dataset.got]=true;
+    b.closest(".lcard").classList.add("seen"); b.classList.add("alt"); b.textContent="✔ Got it";
+    $("#seencount").textContent=`Cards read: ${Object.keys(S.seen).length} / ${A.guide.length}`; updateChip();
+    if(!was&&isStepDone("guide")){ toast("📘 Badge earned: Prepared"); confetti(); } }));
+  m.querySelectorAll("[data-mk]").forEach(b=>b.addEventListener("click",()=>{ const key=b.dataset.mk, it=lookup(key), a=S.ans[key]||(S.ans[key]={}); if(a.done) return; a.sel=a.sel||[];
+    const v=b.dataset.val, i=a.sel.indexOf(v); if(i>=0) a.sel.splice(i,1); else { if(a.sel.length>=it.answers.length){ toast(`Choose only ${it.answers.length}.`); return; } a.sel.push(v); } render(true); }));
+  m.querySelectorAll("[data-mcheck]").forEach(b=>b.addEventListener("click",()=>{ const key=b.dataset.mcheck, it=lookup(key), a=S.ans[key]; if(!a||!a.sel||a.sel.length!==it.answers.length) return;
+    const good=a.sel.filter(v=>it.answers.includes(v)).length; a.done=true; a.pts=Math.max(0,(good-(a.sel.length-good))/it.answers.length); afterScore(); }));
+  m.querySelectorAll(".match").forEach(box=>{ const key=box.dataset.key; let selL=null;
+    box.querySelectorAll("[data-l]").forEach(b=>b.addEventListener("click",()=>{ box.querySelectorAll("[data-l]").forEach(x=>x.classList.remove("sel")); b.classList.add("sel"); selL=+b.dataset.l; }));
+    box.querySelectorAll("[data-r]").forEach(b=>b.addEventListener("click",()=>{ if(selL===null){ toast("First choose a word on the left."); return; }
+      const it=lookup(key), a=S.ans[key]||(S.ans[key]={got:[],miss:0}); a.got=a.got||[]; a.miss=a.miss||0; const r=+b.dataset.r;
+      if(r===selL){ a.got.push(r); if(a.got.length===it.pairs.length){ a.done=true; a.pts=Math.max(0,(it.pairs.length-a.miss)/it.pairs.length); } afterScore(); }
+      else { a.miss++; b.classList.add("no"); setTimeout(()=>b.classList.remove("no"),600); } })); });
+  m.querySelectorAll(".writing").forEach(ta=>ta.addEventListener("input",()=>{
+    const id=ta.dataset.t, t=taskById(id); S.w[id]=ta.value; const st=writeStats(t);
+    const wrap=ta.closest(".taskwrap"); wrap.querySelector(".wc").textContent=st.wc; wrap.querySelector(".wstat").textContent=st.wc>=t.minWords?"✅ Long enough":"";
+    wrap.querySelectorAll(".targets .tg").forEach((x,i)=>x.classList.toggle("on",st.hits[i]));
+    const rb=wrap.querySelector("[data-rev]"); if(rb){ rb.disabled=st.wc<t.minWords; const hint=rb.nextElementSibling; if(hint) hint.textContent=st.wc>=t.minWords?"":`Write at least ${t.minWords} words to unlock it.`; }
+    const mine=wrap.querySelector(".mine .txt"); if(mine) mine.textContent=ta.value;
+    updateChip(); }));
+  m.querySelectorAll("[data-rev]").forEach(b=>b.addEventListener("click",()=>{ const id=b.dataset.rev; S.rev[id]=true;
+    const zone=m.querySelector(`[data-sz="${id}"]`); zone.innerHTML=sampleZone(taskById(id)); bind(zone); if(zone.scrollIntoView) zone.scrollIntoView({behavior:"smooth",block:"start"}); }));
+  m.querySelectorAll("[data-cmp]").forEach(c=>c.addEventListener("change",()=>{ const id=c.dataset.cmp; S.cmp[id]=S.cmp[id]||{}; S.cmp[id][c.dataset.i]=c.checked; }));
+  m.querySelectorAll("[data-dl]").forEach(b=>b.addEventListener("click",()=>{ const t=taskById(b.dataset.dl);
+    download(`${A.id}-${t.id}.txt`, `${t.title}\n\nTask: ${t.prompt}\n\n${S.w[t.id]||""}\n`, "text/plain"); }));
+  const dall=$("#dlall"); if(dall) dall.addEventListener("click",()=>{
+    const txt=A.tasks.concat(A.exam).map(t=>`=== ${t.title} (${wordsOf(t.id)} words)\nTask: ${t.prompt}\n\n${S.w[t.id]||"(not written)"}\n`).join("\n");
+    download(`${A.id}-all-answers.txt`, txt, "text/plain"); });
+  m.querySelectorAll("[data-tstart]").forEach(b=>b.addEventListener("click",()=>toggleTimer(b.dataset.tstart)));
+  m.querySelectorAll("[data-treset]").forEach(b=>b.addEventListener("click",()=>{ const id=b.dataset.treset; stopTimer(); S.times=S.times||{}; S.times[id]=taskById(id).minutes*60; render(true); }));
+  const bs=$("#bsearch"); if(bs) bs.addEventListener("input",()=>{ const v=bs.value.toLowerCase().trim();
+    m.querySelectorAll(".brow").forEach(r=>{ r.style.display = !v || r.dataset.txt.includes(v) ? "" : "none"; }); });
+  const gc=$("#getcert"); if(gc) gc.addEventListener("click",()=>{ S.name=$("#nm").value.trim(); if(!S.name){toast("Type your name first."); $("#nm").focus(); return;} showCert(); });
+}
+function persistAndRerender(key){ afterScore(); }
+function afterScore(){ const before=document.querySelectorAll(".badge.got").length; render(true);
+  BADGES.forEach(b=>{ if(badgeGot(b[0]) && !S["b_"+b[0]]){ S["b_"+b[0]]=1; toast(`${b[1]} Badge earned: ${b[2]}`); confetti(); } }); }
+function toggleTimer(id){
+  if(timer && timer.id===id){ stopTimer(); render(true); return; }
+  stopTimer(); S.times=S.times||{}; if(S.times[id]===undefined) S.times[id]=taskById(id).minutes*60;
+  timer={id, h:setInterval(()=>{ S.times[id]--; const el=$("#clock-"+id);
+    if(el){ const m=String(Math.max(0,Math.floor(S.times[id]/60))).padStart(2,"0"), s=String(Math.max(0,S.times[id]%60)).padStart(2,"0"); el.textContent=`${m}:${s}`; el.classList.toggle("low", S.times[id]<=120); }
+    if(S.times[id]<=0){ stopTimer(); toast("⏱ Time is up. Finish your sentence and check your work."); render(true); } },1000)};
+  render(true);
+}
+function stopTimer(){ if(timer){ clearInterval(timer.h); timer=null; } }
+function go(id){ stopTimer(); step=id; render(); window.scrollTo({top:0,behavior:"smooth"}); }
+
+/* ---------- storage: in-memory + JSON file ---------- */
+function save(){ /* progress is kept in memory; use Save progress to download a JSON file */ }
+function download(name, text, type){ const b=new Blob([text],{type}); const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500); }
+function saveFile(){ download(`${L.id}-progress.json`, JSON.stringify(S,null,1), "application/json"); toast("💾 Progress saved to a file"); }
+function loadFile(file){
+  const r=new FileReader(); r.onload=()=>{ try{ const d=JSON.parse(r.result); if(d.lesson!==L.id){ toast("This file is for a different lesson."); return; } S=Object.assign({v:1,lesson:L.id,ans:{},seen:{},writing:"",name:"",order:{}},d); render(); toast("📂 Progress loaded"); }catch(e){ toast("That file could not be read."); } }; r.readAsText(file);
+}
+
+/* ---------- fx ---------- */
+let toastT; function toast(t){ const el=$("#toast"); el.textContent=t; el.classList.add("show"); clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove("show"),2600); }
+const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function confetti(){
+  if(reduce) return; const c=$("#confetti"); if(!c.getContext) return; const x=c.getContext("2d"); if(!x) return;
+  c.width=innerWidth; c.height=innerHeight; const cols=[T.pri,T.sec,T.acc,"#22c55e","#fff"];
+  const P=Array.from({length:140},()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height*.5,vx:(Math.random()-.5)*4,vy:2+Math.random()*4,r:4+Math.random()*5,c:cols[Math.floor(Math.random()*cols.length)],a:Math.random()*6}));
+  let f=0; (function tick(){ x.clearRect(0,0,c.width,c.height); P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.a+=.1; x.fillStyle=p.c; x.save(); x.translate(p.x,p.y); x.rotate(p.a); x.fillRect(-p.r,-p.r/2,p.r*2,p.r); x.restore();}); if(++f<150) requestAnimationFrame(tick); else x.clearRect(0,0,c.width,c.height); })();
+}
+function miniBurst(el){ if(reduce||!el.animate) return; el.animate([{transform:"scale(1)"},{transform:"scale(1.12)"},{transform:"scale(1)"}],{duration:350}); }
+function showCert(){
+  const s=score(); const d=new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
+  $("#certbg").innerHTML=`<div class="cert" role="dialog" aria-label="Certificate">
+    <div style="font-size:2.4rem">🏆</div><div style="color:var(--muted)">Certificate of achievement</div>
+    <h2>IELTS Writing Task 1</h2><div style="font-weight:700;color:var(--pri)">Build Your Answer · Lesson ${L.num}: ${esc(L.title)}</div>
+    <p style="margin:18px 0 0">This certifies that</p><div class="nm">${esc(S.name)}</div>
+    <p>completed the lesson with a score of <b>${s.pct}%</b></p><p>${d}</p>
+    <div class="by">Designed by: Nazila Motahari</div>
+    <div class="btns"><button class="act" id="pc">Print</button><button class="act alt" id="cc">Close</button></div></div>`;
+  $("#certbg").classList.add("show"); confetti();
+  $("#pc").onclick=()=>window.print(); $("#cc").onclick=()=>$("#certbg").classList.remove("show");
+}
+
+
+function showCert(){
+  const s=score(); const d=new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
+  $("#certbg").innerHTML=`<div class="cert" role="dialog" aria-label="Certificate"><div style="font-size:2.4rem">🏆</div>
+    <div style="color:var(--muted)">Certificate of achievement</div><h2>IELTS Writing Task 1</h2>
+    <div style="font-weight:700;color:var(--pri)">${esc(A.title)}</div>
+    <p style="margin:18px 0 0">This certifies that</p><div class="nm">${esc(S.name)}</div>
+    <p>completed the exam practice with a score of <b>${s.pct}%</b></p><p>${d}</p>
+    <div class="by">Designed by: Nazila Motahari</div>
+    <div class="btns"><button class="act" id="pc">Print</button><button class="act alt" id="cc">Close</button></div></div>`;
+  $("#certbg").classList.add("show"); confetti();
+  $("#pc").onclick=()=>window.print(); $("#cc").onclick=()=>$("#certbg").classList.remove("show");
+}
+function saveFile(){ download(`${A.id}-progress.json`, JSON.stringify(S,null,1), "application/json"); toast("💾 Progress saved to a file"); }
+function loadFile(file){ const r=new FileReader(); r.onload=()=>{ try{ const d=JSON.parse(r.result); if(d.app!==A.id){ toast("This file is for a different app."); return; }
+  S=Object.assign({v:1,app:A.id,ans:{},seen:{},w:{},rev:{},cmp:{},name:"",order:{},cur:A.tasks[0].id,curX:A.exam[0].id},d); render(); toast("📂 Progress loaded"); }catch(e){ toast("That file could not be read."); } }; r.readAsText(file); }
+
+function boot(){
+  document.title=`${A.title} · IELTS Writing Task 1`;
+  $("#app").innerHTML=`
+  <header class="top"><div class="top-in"><span class="num">📊</span><div class="grow"><h1>${esc(A.title)}</h1><small>IELTS Writing Task 1 · bar charts and pie charts</small></div>
+  <span class="chip" id="chip"></span>
+  <div class="tools"><button id="sv">💾 Save</button> <button id="ld">📂 Load</button> <button id="rs">↺ Restart</button></div>
+  <input type="file" id="fi" accept=".json,application/json" hidden></div></header>
+  <div class="hero"><div><h2>${esc(A.headline)}</h2><p>${esc(A.subtitle)}</p><p class="ar">${esc(A.arTitle)}</p>
+    <div class="obj"><b>By the end of this app, you will…</b><ul>${A.objectives.map(o=>`<li>${esc(o)}</li>`).join("")}</ul></div></div>
+    <div class="hero-graph">${renderGraph(A.graphs[A.heroGraph],[],{draw:true})}</div></div>
+  <nav class="rail" aria-label="Steps">${stepNames.map((s,i)=>`<button data-step="${s[0]}"><span class="n">${i+1}</span>${s[1]}</button>`).join("")}</nav>
+  <main id="main"></main><footer>Designed by: Nazila Motahari</footer>
+  <div class="cert-bg" id="certbg"></div><canvas id="confetti"></canvas><div class="toast" id="toast" role="status"></div>`;
+  document.querySelectorAll(".rail button").forEach(b=>b.addEventListener("click",()=>go(b.dataset.step)));
+  $("#sv").onclick=saveFile; $("#ld").onclick=()=>$("#fi").click();
+  $("#fi").onchange=e=>{ if(e.target.files[0]) loadFile(e.target.files[0]); e.target.value=""; };
+  $("#rs").onclick=()=>{ if(confirm("Restart? Unsaved work will be lost.")){ stopTimer(); S={v:1,app:A.id,ans:{},seen:{},w:{},rev:{},cmp:{},name:"",order:{},cur:A.tasks[0].id,curX:A.exam[0].id}; go("guide"); } };
+  window.addEventListener("beforeunload",e=>{ if(Object.keys(S.ans).length||Object.keys(S.w).length){ e.preventDefault(); e.returnValue=""; } });
+  render();
+}
+window.__APP={get S(){return S}, renderGraph, score, go, lookup, isStepDone, writeStats, loadFile, taskById, sampleWords, badgeGot};
+boot();
+})();
+</script>
+</body></html>
